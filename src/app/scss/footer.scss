@@ -1,0 +1,27 @@
+footer {
+    form {
+        .inner {
+            @apply flex max-sm:flex-col;
+        }
+
+        [data-slot="input-wrapper"] {
+            @apply p-4 xl:p-4 2xl:p-6 border-1 border-white max-sm:border-b-0 sm:border-r-0 border-opacity-50 h-auto min-h-0 rounded-none;
+
+            &[data-focus="true"] {
+                @apply border-white border-opacity-50 !important;
+            }
+        }
+
+        [data-slot="input"] {
+            @apply font-body text-ellipsis;
+
+            &::placeholder {
+                @apply text-white text-opacity-60;
+            }
+        }
+
+        button[type="submit"] {
+            @apply bg-[#4A5D3F] font-heading text-[1.125rem] md:text-[1.25rem] font-semibold uppercase tracking-wider leading-tight md:leading-tight gap-0 p-3 md:p-4 xl:p-4 2xl:p-6 m-0 w-full sm:w-[70%] h-auto min-h-0 rounded-none;
+        }
+    }
+}

@@ -1,0 +1,149 @@
+nav {
+    &.header-nav {
+        @apply bg-[#00141F] bg-opacity-10 font-heading border-b-2 border-b-white border-opacity-10 w-full absolute top-0 left-0 transition-background;
+        @apply border-solid !important;
+
+        header {
+            @apply bg-transparent items-stretch gap-0 p-0 mx-auto w-full max-w-full;
+
+            ul {
+                @apply px-6 md:px-6 lg:px-6 xl:px-8 py-3 md:py-4 lg:border-r-2 last-of-type:border-r-0 border-white border-opacity-10 h-auto;
+
+                &.logo-wrapper {
+                    @apply gap-4 lg:gap-6 lg:grow-0;
+                }
+
+                & > li {
+                    & > a,
+                    & > button {
+                        @apply font-heading lg:text-[clamp(0.92rem,0.5987rem+0.502vw,1rem)] xl:text-base 2xl:text-xl text-white font-semibold uppercase tracking-wider lg:leading-none flex flex-row items-center w-auto min-w-[inherit] h-auto relative transition-all duration-300 ease-in-out;
+
+                        svg {
+                            @apply lg:w-3 xl:w-3 2xl:w-auto rotate-0 transition-all duration-300 ease-in-out;
+
+                            path {
+                                @apply transition-all duration-300 ease-in-out;
+                            }
+                        }
+
+                        &[aria-expanded="true"] {
+                            @apply opacity-100 scale-100;
+
+                            svg {
+                                @apply -rotate-180;
+                            }
+                        }
+
+                        &:hover,
+                        &.active {
+                            @apply text-[#B2DF97];
+
+                            svg {
+                                path {
+                                    @apply fill-[#B2DF97];
+                                }
+                            }
+                        }
+                    }
+                }
+
+                &.desktop-navbar-menu {
+                    @apply gap-4 md:gap-[clamp(0.92rem,0.5987rem+0.502vw,1rem)] lg:gap-[clamp(0.92rem,-3.4169rem+6.7765vw,2rem)] xl:gap-[clamp(1.5rem,-6.0294rem+9.4118vw,3rem)] 2xl:gap-[clamp(3rem,-5rem+8.3333vw,5rem)];
+                }
+
+                .menu-toggle {
+                    @apply -mx-2 w-10 h-10;
+
+                    span {
+                        &:before,
+                        &:after {
+                            @apply bg-[#B2DF97] h-0.5 shadow-sm;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+// submenu
+.header-dropdown-wrapper {
+    @apply font-body lg:mt-5 xl:mt-[clamp(1.5rem,4.0098rem+-3.1373vw,1rem)] 2xl:mt-[1.45rem];
+
+    [data-slot="content"] {
+        @apply bg-[#DEF6D1CC] p-0;
+    }
+    [data-slot="base"] {
+        @apply p-4;
+
+        ul {
+            @apply gap-2;
+
+            li {
+                .menu-link {
+                    @apply font-body text-lg text-gray-800 font-semibold;
+                }
+
+                a {
+                    @apply text-gray-800 font-medium;
+
+                    &:hover,
+                    &.active {
+                        @apply text-[#637E53];
+                    }
+                }
+            }
+        }
+    }
+}
+
+// mobile menu
+.mobile-navbar-menu {
+    @apply bg-[#24505a] px-6 pt-24 pb-6;
+
+    & > li {
+        & > a,
+        & > button {
+            @apply font-heading lg:text-[clamp(0.92rem,0.5987rem+0.502vw,1rem)] xl:text-base 2xl:text-xl text-white font-semibold uppercase tracking-wider lg:leading-none flex flex-row items-center w-full min-w-[inherit] h-auto relative transition-all duration-300 ease-in-out;
+
+            svg {
+                @apply lg:w-3 xl:w-3 2xl:w-auto rotate-0 transition-all duration-300 ease-in-out;
+
+                path {
+                    @apply transition-all duration-300 ease-in-out;
+                }
+
+                &[class*="rotate-180"] {
+                    @apply -rotate-180;
+                }
+            }
+
+            &:hover,
+            &.active {
+                @apply text-[#B2DF97];
+
+                svg {
+                    path {
+                        @apply fill-[#B2DF97];
+                    }
+                }
+            }
+        }
+
+        // submenu
+        ul {
+            @apply pl-6 mt-0 border-none;
+
+            li {
+                a {
+                    @apply text-white font-medium;
+
+                    &:hover,
+                    &.active {
+                        @apply text-[#B2DF97];
+                    }
+                }
+            }
+        }
+    }
+}
