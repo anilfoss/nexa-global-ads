@@ -7,16 +7,20 @@ nav {
             @apply bg-transparent items-stretch gap-0 p-0 mx-auto w-full max-w-full;
 
             ul {
-                @apply px-6 md:px-6 lg:px-6 xl:px-8 py-3 md:py-4 lg:border-r-2 last-of-type:border-r-0 border-white border-opacity-10 h-auto;
+                @apply px-5 sm:px-6 md:px-6 lg:px-6 xl:px-6 2xl:px-8 py-3 md:py-4 lg:border-r-2 last-of-type:border-r-0 border-white border-opacity-10 h-auto transition-all duration-300 ease-in-out;
 
                 &.logo-wrapper {
                     @apply gap-4 lg:gap-6 lg:grow-0;
+
+                    img {
+                        @apply transition-all duration-300 ease-in-out;
+                    }
                 }
 
                 & > li {
                     & > a,
                     & > button {
-                        @apply font-heading lg:text-[clamp(0.92rem,0.5987rem+0.502vw,1rem)] xl:text-base 2xl:text-xl text-white font-semibold uppercase tracking-wider lg:leading-none flex flex-row items-center w-auto min-w-[inherit] h-auto relative transition-all duration-300 ease-in-out;
+                        @apply font-heading lg:text-[clamp(0.8rem,-0.0031rem+1.2549vw,1rem)] xl:text-base 2xl:text-xl text-white font-semibold uppercase tracking-wider lg:leading-none flex flex-row items-center w-auto min-w-[inherit] h-auto relative transition-all duration-300 ease-in-out;
 
                         svg {
                             @apply lg:w-3 xl:w-3 2xl:w-auto rotate-0 transition-all duration-300 ease-in-out;
@@ -48,7 +52,7 @@ nav {
                 }
 
                 &.desktop-navbar-menu {
-                    @apply gap-4 md:gap-[clamp(0.92rem,0.5987rem+0.502vw,1rem)] lg:gap-[clamp(0.92rem,-3.4169rem+6.7765vw,2rem)] xl:gap-[clamp(1.5rem,-6.0294rem+9.4118vw,3rem)] 2xl:gap-[clamp(3rem,-5rem+8.3333vw,5rem)];
+                    @apply gap-4 md:gap-[clamp(0.92rem,0.5987rem+0.502vw,1rem)] lg:gap-[clamp(0.85rem,-3.768rem+7.2157vw,2rem)] xl:gap-[clamp(1rem,-6.5294rem+9.4118vw,2.5rem)] 2xl:gap-[clamp(1.2rem,-10rem+11.6667vw,4rem)];
                 }
 
                 .menu-toggle {
