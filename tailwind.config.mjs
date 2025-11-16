@@ -71,6 +71,8 @@ const config = {
                     "linear-gradient(180deg, rgba(4,68,86,0.85) 19.61%, rgba(3,9,0,0.85) 102.74%)",
                 "overlay-2":
                     "linear-gradient(180deg, rgba(4,68,86,0.85) 19.61%, rgba(4,68,86,0.85) 102.74%)",
+                "overlay-3":
+                    "linear-gradient(180deg, rgba(4, 68, 86, 0.65) 19.61%, rgba(3, 9, 0, 0.65) 102.74%)",
             },
             // backgroundImage: {
             //     "gradient-button":
