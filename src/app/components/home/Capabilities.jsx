@@ -201,10 +201,10 @@ const Capabilities = () => {
                         <div className="content-end pr-6 md:pr-8 lg:pr-0 lg:pl-8 xl:pl-14 2xl:pl-16 pt-0 pb-12 md:pb-14 lg:py-14 2xl:py-20 lg:w-[35%] xl:w-[30%] relative after:content-[''] after:w-[1px] after:h-[200vh] after:border-l-2 after:border-solid after:border-white after:border-opacity-20 after:absolute after:left-full after:lg:left-0 after:bottom-0">
                             <Button
                                 as={Link}
-                                href="/"
+                                href="/capabilities"
                                 className="button !w-full max-w-lg md:max-w-[calc(65%+1.2rem)] lg:max-w-full"
                             >
-                                SEE ALL CAPABILITIES
+                                See All Capabilities
                             </Button>
                         </div>
                     </div>

@@ -33,7 +33,7 @@ const menuItems1 = [
     { id: 2, name: "About Us", href: "/about-us" },
     {
         id: 3,
-        name: "Product",
+        name: "Products",
         hasChildren: true,
         children: [
             {
@@ -77,6 +77,7 @@ const menuItems1 = [
     },
     { id: 4, name: "Capabilities", href: "/capabilities" },
     { id: 5, name: "Investor Relations", href: "/investor-relations" },
+    { id: 6, name: "Careers", href: "/careers" },
 ];
 
 const menuItems2 = [
@@ -162,7 +163,7 @@ const Header = () => {
                             height={53}
                             priority
                             unoptimized
-                            className="w-[200px] min-w-[200px] xl:w-[311px] xl:min-w-[311px] max-w-full h-auto rounded-none"
+                            className="w-[200px] min-w-[200px] xl:w-[280px] xl:min-w-[280px] 2xl:w-[311px] 2xl:min-w-[311px] max-w-full h-auto rounded-none"
                         />
                     </Link>
                 </NavbarBrand>

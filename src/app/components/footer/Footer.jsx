@@ -47,6 +47,10 @@ const footerData = {
             title: "Investor Relations",
             link: "/investor-relations",
         },
+        {
+            title: "Careers",
+            link: "/careers",
+        },
     ],
     aboutMenu: [
         {
