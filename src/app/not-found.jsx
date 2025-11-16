@@ -23,7 +23,7 @@ const NotFound = () => {
                         <Button
                             as={Link}
                             href="/"
-                            className="button btn-primary mt-6"
+                            className="button btn-primary !px-8 mt-6"
                         >
                             Back to Homepage
                         </Button>
