@@ -1,0 +1,102 @@
+.section-investor-hero {
+    .title {
+        & > span {
+            @apply inline;
+
+            .outer-span {
+                @apply inline sm:block;
+            }
+        }
+        span {
+            &.chars {
+                @apply opacity-0 relative top-10;
+            }
+
+            &.text-highlight {
+                @apply relative;
+
+                .chars {
+                    @apply text-gradient-1;
+                }
+            }
+        }
+    }
+
+    .description {
+        .lines {
+            @apply block overflow-hidden;
+
+            .words {
+                @apply opacity-0 relative top-20;
+            }
+        }
+    }
+}
+
+.section-market-opportunity {
+    .grid-wrapper {
+        @apply grid grid-cols-6 gap-4;
+
+        .item {
+            @apply text-white p-6 xl:p-7 pt-32 sm:pt-44 2xl:pt-60 relative z-[1] rounded-2xl overflow-hidden;
+
+            &:after {
+                @apply content-[''] bg-overlay-1 absolute inset-0 -z-[1];
+            }
+
+            h5 {
+                @apply text-[1.5rem] md:text-[2rem] xl:text-[1.75rem] 2xl:text-[1.85rem] text-white font-medium;
+            }
+
+            p {
+                @apply text-[1.125rem] md:text-[1.25rem] xl:text-[1.125rem] 2xl:text-[1.25rem] mt-2 xl:mt-3;
+            }
+
+            .image {
+                @apply w-full h-full object-cover absolute inset-0 -z-[1] rounded-none;
+            }
+
+            &.item-military {
+                @apply col-span-6 sm:col-span-3;
+            }
+            &.item-maritime {
+                @apply col-span-6 sm:col-span-3;
+            }
+            &.item-integrated {
+                @apply col-span-6 xl:col-span-2;
+            }
+            &.item-shipborne {
+                @apply col-span-6 sm:col-span-3 xl:col-span-2;
+            }
+            &.item-radar {
+                @apply col-span-6 sm:col-span-3 xl:col-span-2;
+            }
+        }
+    }
+}
+
+.section-strategic-priorities {
+    .grid-wrapper {
+        @apply grid grid-cols-1 sm:grid-cols-2 gap-6 md:gap-10;
+
+        .item {
+            @apply bg-grid-pattern bg-no-repeat bg-center bg-cover bg-light-gray text-center p-4 md:p-6 border-1 border-solid border-black border-opacity-20 rounded-md shadow-card;
+
+            .image {
+                @apply mx-auto mt-[2vw] mb-[3vw] 2xl:my-0 h-[8rem] md:h-[10rem] 2xl:h-[21rem] 2xl:object-none;
+            }
+            h5 {
+                @apply mb-3 mx-auto sm:max-w-44 md:max-w-60 xl:max-w-full;
+            }
+            p {
+                @apply text-[1.125rem] md:text-[1.25rem] leading-tight md:leading-tight;
+            }
+
+            &.item-strengthen-ai {
+                h5 {
+                    @apply sm:max-w-36 md:max-w-48 xl:max-w-full;
+                }
+            }
+        }
+    }
+}

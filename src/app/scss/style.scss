@@ -30,6 +30,10 @@ button {
     @apply transition-all duration-300 ease-in-out;
 }
 
+img {
+    @apply w-auto max-w-full h-auto max-h-full;
+}
+
 .container {
     @apply px-6 md:px-8 mx-auto w-full max-w-[118rem];
 }

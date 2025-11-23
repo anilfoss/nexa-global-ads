@@ -1,0 +1,80 @@
+.section-contact-hero {
+    .title {
+        & > span {
+            @apply inline;
+
+            .outer-span {
+                @apply inline sm:block;
+            }
+        }
+        span {
+            &.chars {
+                @apply opacity-0 relative top-10;
+            }
+
+            &.text-highlight {
+                @apply relative;
+
+                .chars {
+                    @apply text-gradient-1;
+                }
+            }
+        }
+    }
+
+    .description {
+        .lines {
+            @apply block overflow-hidden;
+
+            .words {
+                @apply opacity-0 relative top-20;
+            }
+        }
+    }
+}
+
+.section-our-contact {
+    .form-wrapper {
+        form {
+            @apply bg-light-gray px-6 md:px-10 py-6 md:py-10 mt-6 md:mt-8 rounded-lg;
+
+            .inner {
+                @apply flex flex-wrap -mx-3 md:-mx-5 -mb-5 md:-mb-6;
+
+                & > * {
+                    @apply px-3 md:px-5 mb-5 md:mb-6 w-full;
+                }
+
+                .group {
+                    &.half {
+                        @apply sm:w-1/2;
+                    }
+
+                    [data-slot="input-wrapper"] {
+                        @apply bg-white border-1 border-solid border-black border-opacity-20 h-11 min-h-11 rounded-[3px] shadow-none;
+                    }
+                    [data-slot="label"] {
+                        @apply text-black text-medium;
+                    }
+
+                    [data-slot="input"] {
+                        @apply text-[1.125rem] md:text-[1.25rem] leading-tight md:leading-tight text-ellipsis;
+                    }
+
+                    &[data-invalid="true"] {
+                        [data-slot="input-wrapper"] {
+                            @apply border-danger;
+                            @apply bg-white !important;
+                        }
+                        [data-slot="label"] {
+                            @apply text-black !important;
+                        }
+                        [data-slot="helper-wrapper"] {
+                            @apply hidden;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

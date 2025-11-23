@@ -124,7 +124,7 @@
             }
 
             [data-slot="tab"] {
-                @apply font-heading text-[1.25rem] md:text-[1.5rem] lg:text-[1.65rem] xl:text-[1.75rem] 2xl:text-[2rem] text-white normal-case leading-tight md:leading-tight text-left block p-6 md:pl-0 md:pr-6 md:py-6 xl:py-8 2xl:py-10 h-auto opacity-100 relative z-[1];
+                @apply font-heading text-[1.25rem] md:text-[1.5rem] lg:text-[1.65rem] xl:text-[1.75rem] 2xl:text-[2rem] text-white normal-case leading-tight md:leading-tight text-left block p-6 md:pl-0 md:pr-6 md:py-6 xl:py-8 2xl:py-10 max-md:w-auto h-auto opacity-100 relative z-[1];
 
                 &::after {
                     @apply content-[''] bg-white bg-opacity-20 w-full md:w-screen h-0.5 absolute right-0 bottom-0 -z-[1];
@@ -149,7 +149,7 @@
     }
 
     [data-slot="panel"] {
-        @apply grow p-6 max-md:pl-0 xl:p-8 2xl:p-10 pr-0 md:-mt-24 2xl:-mt-28;
+        @apply grow p-6 max-md:pl-0 xl:p-8 2xl:p-10 !pr-0 md:-mt-24 2xl:-mt-28;
 
         .inner {
             @apply flex flex-col gap-6 md:gap-8 2xl:gap-10;
@@ -158,17 +158,37 @@
                 @apply table mx-auto;
 
                 .image {
-                    @apply w-full max-w-4xl;
+                    // @apply w-full max-w-4xl;
+                    @apply w-full h-auto;
                 }
             }
             p {
-                @apply mb-3 last-of-type:mb-0;
+                // @apply text-[1.375rem] md:text-[1.5rem] mb-3 last-of-type:mb-0;
+                @apply text-[1.125rem] md:text-[1.375rem] 2xl:text-[1.5rem] mb-3 last-of-type:mb-0;
             }
             h3 {
                 @apply text-white mb-3;
             }
             h5 {
-                @apply text-white mb-3;
+                @apply text-white mt-8 mb-3;
+            }
+            ol {
+                @apply list-decimal pl-8;
+
+                & > li {
+                    @apply pl-2;
+
+                    &::marker {
+                        @apply font-heading text-[1.5rem] md:text-[2rem] leading-tight md:leading-tight;
+                    }
+                }
+            }
+            ul {
+                @apply list-disc pl-6;
+
+                li {
+                    @apply text-[1.125rem] md:text-[1.375rem] 2xl:text-[1.5rem] mb-3 last-of-type:mb-0;
+                }
             }
             .button-wrapper {
                 @apply flex flex-wrap xl:flex-row gap-6 xl:gap-8 2xl:gap-10 mt-6 2xl:mt-8;
