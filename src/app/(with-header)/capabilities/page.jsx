@@ -1,5 +1,7 @@
 import React from "react";
 import HeroCapabilities from "@/app/components/capabilities/HeroCapabilities";
+import OurCapabilities from "@/app/components/capabilities/OurCapabilities";
+import OurTechnology from "@/app/components/capabilities/OurTechnology";
 import "@/app/scss/capabilities.scss";
 
 export const metadata = {
@@ -36,6 +38,8 @@ const page = () => {
     return (
         <>
             <HeroCapabilities />
+            <OurCapabilities />
+            <OurTechnology />
         </>
     );
 };
