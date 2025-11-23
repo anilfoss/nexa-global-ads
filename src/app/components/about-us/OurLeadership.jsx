@@ -13,58 +13,30 @@ const ourLeadershipData = [
         id: 1,
         name: "Mr. Baljit Singh",
         designation: `Chairman`,
-        description: `<p>Mr. Singh a graduate of the National Defense Academy, is an experienced entrepreneur who has led a multitude of companies in India, Singapore, Australia, Philippines and the Middle East to record growth and profit over the past 26 years. His strength lies in his extensive knowledge of managing regional stock exchanges &amp; brokerage businesses. Mr. Singh’s business acumen has led him to create an extensive network around the world from North America to the Middle East to Asia.</p><p>Mr. Singh is the Chairman and sits on the Board of various public companies and charities.</p>`,
+        description: `
+                        <p>Mr. Singh, a graduate of the National Defense Academy, is an accomplished entrepreneur with over 26 years of experience leading companies across India, Singapore, Australia, the Philippines, and the Middle East. He brings deep expertise in managing regional stock exchanges and brokerage organizations, consistently driving record growth and profitability. His strategic insight and global business acumen have enabled him to build a wide-reaching network spanning North America, the Middle East, and Asia.</p>
+                        <p>Mr. Singh currently serves as Chairman and Board Member for several public companies and charitable organizations.</p>
+                    `,
         photo: "img-baljit-singh.png",
     },
     {
         id: 2,
         name: "Lee, Yil-Young",
         designation: `CEO &lpar;Strategy &amp; Defense Sales&rpar;`,
-        description: `<ul>
-                        <li>CEO, Nexa Innovation Co., Ltd.</li>
-                        <li>Secured a contract for 42 anti-drone systems with the Thai Ministry of Justice</li>
-                        <li>Registered supplier for anti-drone projects with Thailand’s Defence Technology Institute (DTI)</li>
-                        <li>Chancellor, Bucheon University – Ulaanbaatar Campus, Mongolia</li>
-                        <li>Chairman, Saeroun Environment Co., Ltd.</li>
-                        <li>Developer of the ARTINO apartment complexes in Hapjeong-dong and Seocho-dong, Seoul</li>
-                        <li>CEO, Emmet Co., Ltd.</li>
-                        <li>Supplier of rescue equipment to the Korea National Fire Agency</li>
-                        <li>Provider of emergency medical response systems to the same agency</li>
-                    </ul>`,
+        description: `
+                        <p>Mr. Lee is a seasoned executive and the CEO of Nexa Innovation Co., Ltd., where he has led significant advancements in defence technology, including securing a major contract to deliver 42 anti-drone systems to the Thai Ministry of Justice and registering as an approved supplier with Thailand’s Defence Technology Institute (DTI). His leadership spans multiple sectors, with roles including Chancellor of Bucheon University’s Ulaanbaatar Campus in Mongolia and Chairman of Saeroun Environment Co., Ltd.</p>
+                        <p>Mr. Lee has also contributed to major urban development projects as the developer of the ARTINO residential complexes in Hapjeong-dong and Seocho-dong, Seoul. In addition, as CEO of Emmet Co., Ltd., he supplies rescue equipment and emergency medical response systems to the Korea National Fire Agency.</p>
+                    `,
         photo: "img-yil-young.png",
     },
     {
         id: 3,
         name: "Cho, Byung-Cheol",
         designation: `CTO (Radar & AI) <br />Head of Systems Integration`,
-        description: `<h6>Education</h6>
-                        <ul>
-                            <li>M.S. in Electronics Engineering, Hanyang University Graduate School</li>
-                        </ul>
-                        <h6>Key Career Highlights</h6>
-                        <ul>
-                            <li>Led high-speed data-system semiconductor planning and architecture</li>
-                            <li>Holder of 54 Korean patents and 21 U.S. patents</li>
-                            <li>Founder & CEO of MAXIUS (system-semiconductor company, established Jan 1997 and operating to date)</li>
-                        </ul>
-                        <h6>Awards & Honors</h6>
-                        <ul>
-                            <li>Korea Technology Grand Prize</li>
-                            <li>Venture Award and Technology Convergence Award</li>
-                            <li>Ministerial Commendations from the Ministry of SMEs & Start-ups and the Ministry of Science, ICT & Future Planning</li>
-                        </ul>
-                        <h6>Government Advisory Roles</h6>
-                        <ul>
-                            <li>Member, Future Growth Committee and Green Committee, Tsinghua University</li>
-                            <li>Planning Committee Member, Ministry of Trade, Industry & Energy</li>
-                            <li>Cloud Planning Commissioner, Ministry of Science, ICT & Future Planning</li>
-                        </ul>
-                        <h6>Professional Affiliations</h6>
-                        <ul>
-                            <li>Vice President, Cloud Research Society</li>
-                            <li>Vice Chairman, Korea Computing Industry Association</li>
-                            <li>Member, LEE Society</li>
-                        </ul>`,
+        description: `
+                        <p>Mr. Cho holds an M.S. in Electronics Engineering from Hanyang University Graduate School and is a highly accomplished technologist and entrepreneur. With deep expertise in high-speed data-system semiconductor planning and architecture, he has built a distinguished career marked by innovation and technical leadership. He is the founder and CEO of MAXIUS, a system-semiconductor company he established in 1997 and continues to lead today. A prolific inventor, Mr. Cho holds 54 Korean patents and 21 U.S. patents, and has been recognized with major national honors, including the Korea Technology Grand Prize, the Venture Award, and the Technology Convergence Award, along with ministerial commendations from the Ministry of SMEs & Start-ups and the Ministry of Science, ICT & Future Planning.</p>
+                        <p>Mr. Cho contributes extensively to national and academic advisory bodies, serving on committees for Tsinghua University, the Ministry of Trade, Industry & Energy, and the Ministry of Science, ICT & Future Planning. He is also an active member of the professional community as Vice President of the Cloud Research Society, Vice Chairman of the Korea Computing Industry Association, and a member of the LEE Society.</p>
+                    `,
         photo: "img-byung-cheol.png",
     },
 ];

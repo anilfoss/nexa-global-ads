@@ -5,7 +5,7 @@ import RadioTitle from "../utils/RadioTitle";
 
 const AboutUs = () => {
     return (
-        <Section className="bg-[#EDEFEC]">
+        <Section className="bg-light-gray">
             <div className="border-b-2 border-solid border-black border-opacity-20">
                 <Container>
                     <div className="flex">
@@ -20,7 +20,7 @@ const AboutUs = () => {
                 <Container>
                     <div className="flex flex-row-reverse lg:flex-row">
                         <div className="border-r-2 border-solid border-black border-opacity-20 lg:w-44 lg:min-w-44 xl:w-52 xl:min-w-52 2xl:w-60 2xl:min-w-60"></div>
-                        <div className="grow p-6 md:p-10 max-md:pr-4 max-lg:!pl-0">
+                        <div className="grow p-6 md:p-10 max-md:pr-4 max-lg:!pl-0 lg:pr-0">
                             <h3 className="leading-snug md:leading-normal">
                                 For a connected world, safeguarding every space
                                 skies, and seas by integrating advanced

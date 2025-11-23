@@ -148,7 +148,7 @@ const Footer = () => {
     }, []);
 
     return (
-        <footer className="footer-section bg-overlay-1 font-body text-base text-white text-opacity-60">
+        <footer className="footer-section bg-overlay-4 font-body text-base text-white text-opacity-60">
             {/* footer menu */}
             <div className="border-b-2 border-white border-opacity-30 overflow-hidden">
                 <Container>

@@ -47,7 +47,7 @@ const openPositionsData = [
 
 const OpenPositions = () => {
     return (
-        <Section className="section-our-positions bg-[#EDEFEC] pb-12 md:pb-20">
+        <Section className="section-our-positions bg-light-gray pb-12 md:pb-20">
             <div className="border-b-2 border-solid border-black border-opacity-20">
                 <Container>
                     <div className="flex">

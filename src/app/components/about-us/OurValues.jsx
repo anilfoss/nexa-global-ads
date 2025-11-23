@@ -53,7 +53,7 @@ const ourValuesData = [
 
 const OurValues = () => {
     return (
-        <Section className="bg-[#EDEFEC] border-t-2 border-solid border-black border-opacity-20">
+        <Section className="bg-light-gray border-t-2 border-solid border-black border-opacity-20">
             <div className="">
                 <Container>
                     <div className="flex flex-col lg:flex-row">

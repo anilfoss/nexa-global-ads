@@ -10,7 +10,7 @@ import { SplitText } from "gsap/SplitText";
 
 gsap.registerPlugin(useGSAP, SplitText);
 
-const HeroProducts = () => {
+const InvestorHero = () => {
     const videoRef = useRef(null);
     const [showPlaceholder, setShowPlaceholder] = useState(true);
 
@@ -23,7 +23,8 @@ const HeroProducts = () => {
                     console.warn("Autoplay blocked:", err);
                 });
             }
-            setShowPlaceholder(false);
+            // setShowPlaceholder(false);
+            setShowPlaceholder(true);
         }, 500);
 
         return () => clearTimeout(timer);
@@ -31,13 +32,13 @@ const HeroProducts = () => {
 
     // 🔹 GSAP text animation
     useGSAP(() => {
-        const splitTitle = new SplitText(".section-products-hero .title", {
+        const splitTitle = new SplitText(".section-investor-hero .title", {
             type: "lines, words, chars",
             tag: "span",
             charsClass: "chars",
         });
         const splitDescription = new SplitText(
-            ".section-products-hero .description",
+            ".section-investor-hero .description",
             {
                 type: "lines, words",
                 tag: "span",
@@ -75,27 +76,19 @@ const HeroProducts = () => {
     });
 
     return (
-        <Section className="section-products-hero content-end pt-28 md:pt-40 pb-12 md:pb-20 min-h-svh relative z-[1] overflow-hidden">
-            {/* Text and content */}
+        <Section className="section-investor-hero content-end pt-28 md:pt-40 pb-12 md:pb-20 min-h-svh relative z-[1] overflow-hidden">
             <Container className="relative z-[2]">
-                <div className="relative">
-                    <h1 className="title text-white text-[3rem] sm:text-[clamp(3rem,0.4803rem+6.2992vw,3.5rem)] md:text-[clamp(3rem,-1.5176rem+9.4118vw,4.5rem)] lg:text-[clamp(3.8rem,-0.4286rem+6.6071vw,7.5rem)] font-semibold sm:flex sm:flex-col opacity-0">
+                <div className="flex flex-col lg:flex-row lg:justify-between lg:items-center lg:gap-4 relative">
+                    <h1 className="title text-white text-[clamp(2.4rem,1.7981rem+3.0094vw,3rem)] sm:text-[clamp(3rem,0.4803rem+6.2992vw,3.5rem)] md:text-[clamp(3rem,-1.5176rem+9.4118vw,4.5rem)] lg:text-[clamp(3.8rem,-0.4286rem+6.6071vw,7.5rem)] font-semibold sm:flex sm:flex-col opacity-0">
                         <span className="outer-span">
-                            End-to-end{" "}
-                            <span className="text-highlight">AI</span>
-                        </span>
-                        <span className="outer-span sm:indent-[3rem] md:indent-[9rem] lg:indent-[clamp(17rem,4.4286rem+19.6429vw,28rem)] ">
-                            {" "}
-                            Counter{" "}
-                            <span className="text-highlight">
-                                UAS solutions
-                            </span>
+                            Investor{" "}
+                            <span className="text-highlight">Relations</span>
                         </span>
                     </h1>
-
-                    <div className="description text-medium lg:text-[clamp(0.9rem,0.5rem+0.625vw,1.25rem)] text-white text-opacity-70 max-lg:mt-4 max-w-4xl lg:max-w-[clamp(16rem,6.8571rem+14.2857vw,24rem)] lg:absolute lg:left-0 lg:bottom-[clamp(0rem,-1.7143rem+2.6786vw,1.5rem)] opacity-0">
-                        Deployable as fixed perimeter stacks, mobile tactical
-                        units, and shipborne systems
+                    <div className="description text-medium lg:text-[clamp(0.9rem,0.5rem+0.625vw,1.25rem)] text-white text-opacity-70 max-lg:mt-4 max-w-full lg:max-w-[22rem] xl:max-w-[24rem] opacity-0">
+                        Nexa Global delivers end-to-end AI-powered C-UAS
+                        technologies protecting airspace, maritime
+                        infrastructure and critical industries.
                     </div>
                 </div>
             </Container>
@@ -112,8 +105,8 @@ const HeroProducts = () => {
                 }`}
             >
                 <Image
-                    src="/images/products-video-placeholder.jpg"
-                    alt="products video placeholder"
+                    src="/images/investor-video-placeholder.jpg"
+                    alt="Hero video placeholder"
                     fill
                     priority
                     unoptimized
@@ -130,10 +123,10 @@ const HeroProducts = () => {
                 playsInline
                 preload="auto"
             >
-                <source src="/images/products-video.mp4" type="video/mp4" />
+                <source src="/images/investor-video.mp4" type="video/mp4" />
             </video>
         </Section>
     );
 };
 
-export default HeroProducts;
+export default InvestorHero;

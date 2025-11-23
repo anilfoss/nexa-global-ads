@@ -23,8 +23,7 @@ const HeroAbout = () => {
                     console.warn("Autoplay blocked:", err);
                 });
             }
-            // setShowPlaceholder(false);
-            setShowPlaceholder(true);
+            setShowPlaceholder(false);
         }, 500);
 
         return () => clearTimeout(timer);

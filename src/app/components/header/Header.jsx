@@ -31,50 +31,51 @@ gsap.registerPlugin(useGSAP);
 const menuItems1 = [
     { id: 1, name: "Home", href: "/" },
     { id: 2, name: "About Us", href: "/about-us" },
-    {
-        id: 3,
-        name: "Products",
-        hasChildren: true,
-        children: [
-            {
-                id: 31,
-                title: "Product 1",
-                href: "/product-1",
-                // links: [
-                //     {
-                //         id: 311,
-                //         name: "Product Submenu 1.1",
-                //         href: "/product/product-1/product-submenu-1.1",
-                //     },
-                //     {
-                //         id: 312,
-                //         name: "Product Submenu 1.2",
-                //         href: "/product/product-1/product-submenu-1.2",
-                //     },
-                // ],
-            },
-            { id: 32, title: "Product 2", href: "/product-2" },
-            { id: 33, title: "Product 3", href: "/product-3" },
-            { id: 34, title: "Product 4", href: "/product-4" },
-            {
-                id: 35,
-                title: "Product 5",
-                href: "/product-5",
-                // links: [
-                //     {
-                //         id: 331,
-                //         name: "Product Submenu 5.1",
-                //         href: "/product/product-5/product-submenu-5.1",
-                //     },
-                //     {
-                //         id: 332,
-                //         name: "Product Submenu 5.2",
-                //         href: "/product/product-5/product-submenu-5.2",
-                //     },
-                // ],
-            },
-        ],
-    },
+    { id: 3, name: "Products", href: "/products" },
+    // {
+    //     id: 3,
+    //     name: "Products",
+    //     hasChildren: true,
+    //     children: [
+    //         {
+    //             id: 31,
+    //             title: "Product 1",
+    //             href: "/product-1",
+    //             // links: [
+    //             //     {
+    //             //         id: 311,
+    //             //         name: "Product Submenu 1.1",
+    //             //         href: "/product/product-1/product-submenu-1.1",
+    //             //     },
+    //             //     {
+    //             //         id: 312,
+    //             //         name: "Product Submenu 1.2",
+    //             //         href: "/product/product-1/product-submenu-1.2",
+    //             //     },
+    //             // ],
+    //         },
+    //         { id: 32, title: "Product 2", href: "/product-2" },
+    //         { id: 33, title: "Product 3", href: "/product-3" },
+    //         { id: 34, title: "Product 4", href: "/product-4" },
+    //         {
+    //             id: 35,
+    //             title: "Product 5",
+    //             href: "/product-5",
+    //             // links: [
+    //             //     {
+    //             //         id: 331,
+    //             //         name: "Product Submenu 5.1",
+    //             //         href: "/product/product-5/product-submenu-5.1",
+    //             //     },
+    //             //     {
+    //             //         id: 332,
+    //             //         name: "Product Submenu 5.2",
+    //             //         href: "/product/product-5/product-submenu-5.2",
+    //             //     },
+    //             // ],
+    //         },
+    //     ],
+    // },
     { id: 4, name: "Capabilities", href: "/capabilities" },
     { id: 5, name: "Investor Relations", href: "/investor-relations" },
     { id: 6, name: "Careers", href: "/careers" },
