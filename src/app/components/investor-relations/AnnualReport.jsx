@@ -9,7 +9,7 @@ const AnnualReport = () => {
     return (
         <Section className="section-annual-report py-8 md:py-16">
             <Container>
-                <div className="bg-overlay-1 text-white flex max-lg:flex-col-reverse justify-between gap-6 lg:gap-10 p-6 md:p-8 lg:p-10 rounded-xl overflow-hidden">
+                <div className="bg-overlay-4 text-white flex max-lg:flex-col-reverse justify-between gap-6 lg:gap-10 p-6 md:p-8 lg:p-10 rounded-xl overflow-hidden">
                     <div className="max-w-[70rem]">
                         <h3 className="max-sm:text-[clamp(2.25rem,1.9992rem+1.2539vw,2.5rem)] text-white">
                             FY2024 Annual Report - Performance, Progress and
@@ -56,3 +56,4 @@ const AnnualReport = () => {
 };
 
 export default AnnualReport;
+
