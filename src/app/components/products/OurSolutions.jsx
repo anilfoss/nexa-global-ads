@@ -181,7 +181,7 @@ const OurSolutions = () => {
     }, [selected]);
 
     return (
-        <Section className="section-our-solutions bg-overlay-1 text-white">
+        <Section className="section-our-solutions bg-overlay-4 text-white">
             <Container>
                 <div className="flex flex-col">
                     <div className="max-md:px-6 pt-6 md:pt-12 2xl:pt-16 pb-4 max-md:-mx-6 max-md:border-b-2 md:border-r-2 border-solid border-white border-opacity-20 md:w-[30%] xl:w-[30%] 2xl:w-[35%] min-w-[30%] xl:min-w-[30%] 2xl:min-w-[35%]">
@@ -273,3 +273,4 @@ const OurSolutions = () => {
 };
 
 export default OurSolutions;
+
