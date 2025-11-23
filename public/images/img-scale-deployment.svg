@@ -1,0 +1,37 @@
+<svg version="1.2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 642 342" width="642" height="342">
+	<defs>
+		<clipPath clipPathUnits="userSpaceOnUse" id="cp1">
+			<path d="m4 0h648c2.21 0 4 1.79 4 4v417c0 2.21-1.79 4-4 4h-648c-2.21 0-4-1.79-4-4v-417c0-2.21 1.79-4 4-4z"/>
+		</clipPath>
+		<clipPath clipPathUnits="userSpaceOnUse" id="cp2">
+			<path d="m-51-356h757v1137h-757z"/>
+		</clipPath>
+		<linearGradient id="g1" x2="1" gradientUnits="userSpaceOnUse" gradientTransform="matrix(-683.902,370.937,-56.139,-103.504,666.607,-41.995)">
+			<stop offset="0" stop-color="#4a5d3f"/>
+			<stop offset="1" stop-color="#9bc384"/>
+		</linearGradient>
+		<linearGradient id="g2" x2="1" gradientUnits="userSpaceOnUse" gradientTransform="matrix(4.899,70.221,-70.221,4.899,426.745,90.456)">
+			<stop offset="0" stop-color="#c6e4b5"/>
+			<stop offset=".505" stop-color="#5d8049"/>
+			<stop offset="1" stop-color="#c6e4b5"/>
+		</linearGradient>
+	</defs>
+	<style>
+		.s0 { fill: none;stroke: url(#g1);stroke-width: 4 } 
+		.s1 { opacity: .2;fill: #637e53 } 
+		.s2 { fill: url(#g2) } 
+	</style>
+	<g>
+		<g id="Clip-Path" clip-path="url(#cp1)">
+			<g>
+				<g id="Clip-Path" clip-path="url(#cp2)">
+					<g style="opacity: .3">
+						<path class="s0" d="m-10.09 346.41l187.8-137.65 150.85 51.43 101.48-149.48h102.17l134.4-139.88"/>
+					</g>
+				</g>
+				<path fill-rule="evenodd" class="s1" d="m429.53 136.62c-12.87 0-23.27-10.41-23.27-23.28 0-12.87 10.4-23.27 23.27-23.27 12.87 0 23.28 10.4 23.28 23.27 0 12.87-10.41 23.28-23.28 23.28z"/>
+				<path fill-rule="evenodd" class="s2" d="m429.53 126.27c-7.15 0-12.93-5.78-12.93-12.93 0-7.15 5.78-12.93 12.93-12.93 7.15 0 12.93 5.78 12.93 12.93 0 7.15-5.78 12.93-12.93 12.93z"/>
+			</g>
+		</g>
+	</g>
+</svg>
