@@ -19,60 +19,62 @@ const config = {
                     "Arial",
                     "sans-serif",
                 ],
-                // body: ["PP Mori", "sans-serif"],
             },
             fontSize: {
                 // base: "0.9375rem", // 15px
             },
             colors: {
-                // "black-2": "#282828",
-                // "gray-1": "#edefec",
                 "light-gray": "#edefec",
-                // "green-light": "#DEF6D1CC",
                 "green-light": "#DEF6D1",
                 "green-dark": "#4A5D3F",
-                // blue2: "#0057AA",
 
                 muted: "#525252",
                 danger: "#d4000a",
-                red: {
-                    50: "#fff0f1",
-                    100: "#ffdddf",
-                    200: "#ffc1c4",
-                    300: "#ff959a",
-                    400: "#ff5961",
-                    500: "#ff2630",
-                    600: "#fc0612",
-                    700: "#d4000a", // default
-                    800: "#af050d",
-                    900: "#900c12",
-                    950: "#500004",
-                    DEFAULT: "#d4000a",
-                },
+                // red: {
+                //     50: "#fff0f1",
+                //     100: "#ffdddf",
+                //     200: "#ffc1c4",
+                //     300: "#ff959a",
+                //     400: "#ff5961",
+                //     500: "#ff2630",
+                //     600: "#fc0612",
+                //     700: "#d4000a", // default
+                //     800: "#af050d",
+                //     900: "#900c12",
+                //     950: "#500004",
+                //     DEFAULT: "#d4000a",
+                // },
 
-                blue: {
-                    50: "#f3f6fc",
-                    100: "#e7edf7",
-                    200: "#cad8ed",
-                    300: "#9bb7de",
-                    400: "#6591cb",
-                    500: "#4173b6",
-                    600: "#305999",
-                    700: "#28487c",
-                    800: "#243e68",
-                    900: "#233657",
-                    950: "#101828", // default
-                    DEFAULT: "#101828",
-                },
+                // blue: {
+                //     50: "#f3f6fc",
+                //     100: "#e7edf7",
+                //     200: "#cad8ed",
+                //     300: "#9bb7de",
+                //     400: "#6591cb",
+                //     500: "#4173b6",
+                //     600: "#305999",
+                //     700: "#28487c",
+                //     800: "#243e68",
+                //     900: "#233657",
+                //     950: "#101828", // default
+                //     DEFAULT: "#101828",
+                // },
                 active: "#B2DF97",
             },
             backgroundImage: {
+                "grid-pattern": "url('/images/img-grid.svg')",
+                // "overlay-1":
+                //     "linear-gradient(180deg, rgba(4,68,86,0.85) 19.61%, rgba(3,9,0,0.85) 102.74%)",
                 "overlay-1":
-                    "linear-gradient(180deg, rgba(4,68,86,0.85) 19.61%, rgba(3,9,0,0.85) 102.74%)",
+                    "linear-gradient(180deg, rgba(4, 68, 86, 0.7) 19.61%, rgba(3, 9, 0, 0.7) 102.74%)",
                 "overlay-2":
                     "linear-gradient(180deg, rgba(4,68,86,0.85) 19.61%, rgba(4,68,86,0.85) 102.74%)",
                 "overlay-3":
                     "linear-gradient(180deg, rgba(4, 68, 86, 0.65) 19.61%, rgba(3, 9, 0, 0.65) 102.74%)",
+                "overlay-4":
+                    "linear-gradient(180deg, rgba(4, 68, 86, 0.85) 19.61%, rgba(3, 9, 0, 0.85) 102.74%)",
+                // linear-gradient(180deg, rgba(4, 68, 86, 0.7) 19.61%, rgba(3, 9, 0, 0.7) 102.74%)
+                // linear-gradient(180deg, rgba(4, 68, 86, 0.85) 19.61%, rgba(3, 9, 0, 0.85) 102.74%);
             },
             // backgroundImage: {
             //     "gradient-button":
@@ -107,7 +109,7 @@ const config = {
                 "in-out": "ease-in-out", // enables `ease-in-out`
             },
             boxShadow: {
-                card: "0px 2px 12px rgba(0, 0, 0, 0.2)",
+                card: "0px 4px 20px 0px rgba(0, 0, 0, 0.1)",
             },
         },
     },
