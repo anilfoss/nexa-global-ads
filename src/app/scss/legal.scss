@@ -1,0 +1,106 @@
+body {
+    &.legal-page {
+        & > div[data-overlay-container] {
+            & > main {
+                @apply pt-[64px] md:pt-[72px] lg:pt-[66px] xl:pt-[80px] 2xl:pt-[85px];
+            }
+        }
+
+        nav {
+            &.header-nav {
+                @apply bg-[#00141F] bg-opacity-10 border-none !important;
+                @apply shadow-header-2;
+
+                header {
+                    ul {
+                        & > li {
+                            & > a {
+                                @apply text-black;
+                            }
+                        }
+
+                        &.logo-wrapper {
+                            @apply border-black border-opacity-20;
+
+                            img {
+                                @apply invert;
+                            }
+                        }
+
+                        &.contact-navbar {
+                            @apply bg-green-dark;
+
+                            & > li {
+                                & > a {
+                                    @apply text-white;
+                                }
+                            }
+                        }
+
+                        &.menu-toggle-wrapper {
+                            @apply bg-green-dark;
+                        }
+                    }
+                }
+            }
+
+            &[data-menu-open="true"] {
+                @apply bg-white bg-opacity-50 !important;
+                @apply shadow-header-2-white;
+            }
+        }
+
+        .section-legal {
+            @apply bg-light-gray text-black text-opacity-80;
+
+            a {
+                @apply hover:text-green-dark;
+            }
+
+            strong {
+                @apply font-semibold;
+            }
+
+            p {
+                @apply text-[1.125rem] md:text-[1.25rem];
+            }
+
+            h5,
+            h6 {
+                @apply font-medium mt-6 mb-4;
+            }
+
+            ol,
+            ul {
+                @apply mb-4;
+
+                li {
+                    @apply text-[1.125rem] md:text-[1.25rem];
+                }
+            }
+
+            ol {
+                &.level-1 {
+                }
+                &.level-2 {
+                }
+            }
+
+            ul {
+                @apply list-disc pl-8 md:pl-12;
+
+                &.list-alpha {
+                    @apply list-none pl-7;
+                }
+            }
+
+            .list-box {
+                @apply border-t-1 border-solid border-black border-opacity-60 pt-2 mt-8;
+
+                &:first-child {
+                    @apply border-t-0 pt-0 mt-0;
+                }
+            }
+        }
+    }
+}
