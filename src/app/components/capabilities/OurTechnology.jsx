@@ -96,7 +96,7 @@ const OurTechnology = () => {
                                                     <Button
                                                         as={Link}
                                                         href={item?.buttonLink}
-                                                        className="button !px-8 md:!py-[1.125rem] "
+                                                        className="button !px-8 md:!py-[1.125rem] max-sm:w-full"
                                                     >
                                                         {item?.buttonText}
                                                     </Button>
@@ -109,45 +109,6 @@ const OurTechnology = () => {
                         })}
                     </div>
                 </Container>
-
-                {/* <Container>
-                    <div className="box-wrapper grid grid-cols-12 gap-4">
-                        {technologyData.map((item) => {
-                            return (
-                                <div
-                                    key={item.id}
-                                    className={`box ${item.class}`}
-                                >
-                                    <Image
-                                        src={`/images/${item.image}`}
-                                        alt={item.title}
-                                        width={item.imgWidth}
-                                        height={item.imgHeight}
-                                        unoptimized
-                                        className="image"
-                                    />
-                                    <div className="content">
-                                        <h5>{parse(item.title)}</h5>
-                                        <p className="text-medium">
-                                            {item.desc}
-                                        </p>
-                                        {item?.buttonText && (
-                                            <div className="button-wrapper">
-                                                <Button
-                                                    as={Link}
-                                                    href={item?.buttonLink}
-                                                    className="button !px-8 md:!py-[1.125rem] "
-                                                >
-                                                    {item?.buttonText}
-                                                </Button>
-                                            </div>
-                                        )}
-                                    </div>
-                                </div>
-                            );
-                        })}
-                    </div>
-                </Container> */}
             </div>
         </Section>
     );

@@ -5,7 +5,7 @@ import RadioTitle from "../utils/RadioTitle";
 
 const VisionMission = () => {
     return (
-        <Section className="bg-light-gray overflow-hidden">
+        <Section id="vision-mission" className="bg-light-gray overflow-hidden">
             <div className="border-b-2 border-solid border-black border-opacity-20">
                 <Container>
                     <div className="flex">

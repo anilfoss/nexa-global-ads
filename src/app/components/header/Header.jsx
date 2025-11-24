@@ -98,6 +98,25 @@ const Header = () => {
 
     const navRef = useRef(null);
 
+    // add class on body
+
+    useEffect(() => {
+        // Pages you want body class on
+        const legalPages = [
+            "/privacy-policy",
+            "/disclaimer",
+            "/cookies",
+            "/terms",
+        ];
+
+        if (legalPages.includes(pathname)) {
+            document.body.classList.add("legal-page");
+        } else {
+            document.body.classList.remove("legal-page");
+        }
+    }, [pathname]);
+
+    // menu
     const handleMenu = () => {
         setIsMenuOpen(false);
     };
@@ -271,7 +290,7 @@ const Header = () => {
             {/* menu 2 */}
             {(isTablet || isDesktop) && (
                 <NavbarContent
-                    className="desktop-navbar-button flex !gap-3 !grow-0 max-lg:ml-auto max-lg:border-l-2 max-lg:border-white max-lg:border-opacity-10 lg:!border-r-0"
+                    className="contact-navbar desktop-navbar-button flex !gap-3 !grow-0 max-lg:ml-auto max-lg:border-l-2 max-lg:border-white max-lg:border-opacity-10 lg:!border-r-0"
                     justify="end"
                 >
                     {menuItems2.map((item) => (
@@ -289,7 +308,7 @@ const Header = () => {
                 </NavbarContent>
             )}
 
-            <NavbarContent className="!grow-0 lg:hidden max-lg:border-l-2 border-white border-opacity-10">
+            <NavbarContent className="menu-toggle-wrapper !grow-0 lg:hidden max-lg:border-l-2 border-white border-opacity-10">
                 <NavbarMenuToggle
                     aria-label={isMenuOpen ? "Close menu" : "Open menu"}
                     className="menu-toggle lg:hidden w-7 h-7"

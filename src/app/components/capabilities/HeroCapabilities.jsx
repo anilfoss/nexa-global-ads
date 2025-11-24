@@ -23,8 +23,7 @@ const HeroCapabilities = () => {
                     console.warn("Autoplay blocked:", err);
                 });
             }
-            // setShowPlaceholder(false);
-            setShowPlaceholder(true);
+            setShowPlaceholder(false);
         }, 500);
 
         return () => clearTimeout(timer);
@@ -77,7 +76,7 @@ const HeroCapabilities = () => {
                 }`}
             >
                 <Image
-                    src="/images/career-video-placeholder.jpg"
+                    src="/images/capabilities-video-placeholder.jpg"
                     alt="Hero video placeholder"
                     fill
                     priority

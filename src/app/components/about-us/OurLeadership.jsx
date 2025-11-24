@@ -61,7 +61,10 @@ const OurLeadership = () => {
     }, [selectedLeader]);
 
     return (
-        <Section className="section-our-leadership bg-overlay-4 text-white">
+        <Section
+            id="board-of-directors"
+            className="section-our-leadership bg-overlay-4 text-white"
+        >
             <div className="border-b-2 border-solid border-white border-opacity-20">
                 <Container>
                     <div className="flex">
@@ -154,4 +157,3 @@ const OurLeadership = () => {
 };
 
 export default OurLeadership;
-

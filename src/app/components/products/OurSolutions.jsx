@@ -273,4 +273,3 @@ const OurSolutions = () => {
 };
 
 export default OurSolutions;
-

@@ -12,46 +12,86 @@ const productsData = [
     {
         id: 1,
         title: "Master Control System",
-        desc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+        desc: `
+                <ul>
+                    <li>Central Control System Console with monitoring capabilities to connected sub-system</li>
+                    <li>Separate console for Detect & Neutralization system</li>
+                </ul>
+            `,
         image: "img-master-control-system.png",
     },
     {
         id: 2,
-        // title: "Container (Fixed)",
         title: "Container <span className='font-body'>(</span>Fixed<span className='font-body'>)</span>",
-        desc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+        desc: `
+                <ul>
+                    <li>20 ft Container (~2 blocks)</li>
+                    <li>Air Condition</li>
+                    <li>Generator</li>
+                    <li>UPS: 2 hours without external power unit</li>
+                    <li>Wiring, Cutting, Bracket, etc</li>
+                </ul>
+            `,
         image: "img-container.png",
     },
     {
         id: 3,
         title: "Anti Drone Radar",
-        desc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+        desc: `
+                <ul>
+                    <li>3D FMCW ASEA Radar</li>
+                    <li>Detect/Identification: More than 10km (RCS 0.03m²)</li>
+                    <li>Azimuth 360°, Elevation 90°</li>
+                    <li>Threat Priority list included</li>
+                </ul>
+            `,
         image: "img-anti-drone-radar.png",
     },
     {
         id: 4,
         title: "EO <span className='font-body'>/</span> IR",
-        desc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+        desc: `
+                <ul>
+                    <li>Maximum Detection Range: < 8km (RCS 0.03m²)</li>
+                    <li>Maximum Identification Range: <5km (RCS 0.03m²)</li>
+                    <li>Al target identification and Tracking system included</li>
+                </ul>
+            `,
         image: "img-eo-ir.png",
     },
     {
         id: 5,
         title: "RF Jammer",
-        desc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+        desc: `
+                <ul>
+                    <li>Jammer Capability: GPS/GLONASS/Galileo/Beidou/QZSS/NAVIC, ETC.</li>
+                    <li>Jamming Distance: < 8km</li>
+                </ul>
+            `,
         image: "img-rf-jammer.png",
     },
     {
         id: 6,
         title: "R C W S",
-        desc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+        desc: `
+                <ul>
+                    <li>Hard kill system capable of neutralizing target through remote control 40mm RCWS and more</li>
+                    <li>Target Range: 2km or better</li>
+                </ul>
+            `,
         image: "img-rcws.png",
+    },
+    {
+        id: 7,
+        title: "Anti-Drone Defense Vehicle",
+        desc: `
+                <p>An Al-integrated tactical vehicle designed to detect, track, and neutralize unauthorized drones using advanced sensors and countermeasure systems.</p>
+            `,
+        image: "img-defence-vehicle.png",
     },
 ];
 
 const OurProducts = () => {
-    const defaultContent =
-        "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.";
-
     return (
         <Section className="section-our-products">
             <div className="border-b-2 border-solid border-black border-opacity-20">
@@ -82,9 +122,6 @@ const OurProducts = () => {
                                     title={parse(product.title)}
                                     keepContentMounted
                                     className="accordion-item"
-                                    // classNames={{
-                                    //     trigger: "cursor-pointer", // Ensures cursor changes over entire trigger area
-                                    // }}
                                 >
                                     <div className="inner">
                                         {product?.image && (
@@ -100,7 +137,7 @@ const OurProducts = () => {
                                             </figure>
                                         )}
                                         <div className="desc">
-                                            {product.desc}
+                                            {parse(product.desc)}
                                         </div>
                                     </div>
                                 </AccordionItem>

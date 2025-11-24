@@ -32,6 +32,10 @@ const footerData = {
     ],
     mainMenu: [
         {
+            title: "Home",
+            link: "/",
+        },
+        {
             title: "About",
             link: "/about-us",
         },
@@ -51,24 +55,28 @@ const footerData = {
             title: "Careers",
             link: "/careers",
         },
+        {
+            title: "Contact Us",
+            link: "/contact-us",
+        },
     ],
     aboutMenu: [
         {
             title: "Vision & Mission",
-            link: "/vision-mission",
+            link: "/about-us#vision-mission",
         },
         {
             title: "Our Values",
-            link: "/our-values",
+            link: "/about-us#our-values",
         },
         {
             title: "Board Of Directors",
-            link: "/board-of-directors",
+            link: "/about-us#board-of-directors",
         },
-        {
-            title: "Management",
-            link: "/management",
-        },
+        // {
+        //     title: "Management",
+        //     link: "/management",
+        // },
     ],
     contactMenu: [
         {
@@ -102,12 +110,16 @@ const footerData = {
     ],
     bottomMenu: [
         {
-            title: "Privacy",
-            link: "/privacy",
+            title: "Cookies",
+            link: "/cookies",
         },
         {
-            title: "Policy",
-            link: "/policy",
+            title: "Terms",
+            link: "/terms",
+        },
+        {
+            title: "Privacy Policy",
+            link: "/privacy-policy",
         },
     ],
 };
@@ -308,20 +320,42 @@ const Footer = () => {
                         <h6 className="animate text-white font-medium">
                             Disclaimer
                         </h6>
-                        <Disclaimer className="animate lg:text-right w-full lg:max-w-[65%] xl:max-w-3xl 2xl:max-w-5xl" />
+                        {/* <Disclaimer className="animate lg:text-right w-full lg:max-w-[65%] xl:max-w-3xl 2xl:max-w-5xl" /> */}
+                        <div className="animate text-white text-opacity-60 lg:text-right w-full lg:max-w-[65%] xl:max-w-3xl 2xl:max-w-5xl">
+                            Nexa Global ADS provides this website for general
+                            informational and promotional purposes only and does
+                            not offer professional, legal, military, regulatory,
+                            or security advice; all decisions relating to
+                            drone-threat mitigation must be made by licensed
+                            professionals and authorized agencies. While we
+                            strive for accuracy, we do not guarantee that the
+                            information is complete, current, or reflective of
+                            final product capabilities, nor that described use
+                            cases are legally permissible in all
+                            jurisdictions...
+                            <Link
+                                href="/disclaimer"
+                                className="text-white hover:text-active inline-block ml-1"
+                            >
+                                Read more
+                            </Link>
+                        </div>
                     </div>
                     <div className="flex flex-wrap justify-between gap-6 sm:gap-8 xl:gap-8 2xl:gap-10 pb-6 md:pb-8 xl:pb-8 2xl:pb-10 mt-8 xl:mt-8 2xl:mt-10">
                         <div className="animate text-white text-opacity-100">
-                            &copy; 2025 Nexa global. All rights reserved.
+                            &copy; 2025 Nexa Global ADS. All Rights Reserved.
                         </div>
 
                         <div className="flex flex-wrap gap-6 md:gap-8">
                             {footerData?.bottomMenu?.map((item, index) => {
+                                const isActive = pathname === item.link;
                                 return (
                                     <Link
                                         key={index}
                                         href={item.link}
-                                        className="animate text-white hover:text-active uppercase flex items-center group transition-none"
+                                        className={`animate text-white hover:text-active uppercase flex items-center group transition-none ${
+                                            isActive ? "!text-active" : ""
+                                        }`}
                                     >
                                         <span>{item.title}</span>
                                     </Link>
