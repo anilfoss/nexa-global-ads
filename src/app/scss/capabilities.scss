@@ -170,7 +170,7 @@
                     @apply sm:flex-row items-center;
 
                     .image {
-                        @apply p-4 max-sm:pb-0 2xl:p-6 max-sm:max-w-full max-lg:max-w-[55%] h-full;
+                        @apply p-4 max-sm:pb-0 2xl:p-6 max-sm:max-w-full max-lg:max-w-[55%] xl:max-w-[65%] h-full;
                     }
 
                     .content {
