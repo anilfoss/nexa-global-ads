@@ -25,6 +25,7 @@ const config = {
             },
             colors: {
                 "light-gray": "#edefec",
+                green: "#5E8847",
                 "green-light": "#DEF6D1",
                 "green-dark": "#4A5D3F",
 
