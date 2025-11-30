@@ -3,6 +3,10 @@ nav {
         @apply bg-[#00141F] bg-opacity-10 font-heading border-b-2 border-b-white border-opacity-10 w-full absolute top-0 left-0 transition-background;
         @apply border-solid !important;
 
+        &[data-menu-open="true"] {
+            @apply fixed;
+        }
+
         header {
             @apply bg-transparent items-stretch gap-0 p-0 mx-auto w-full max-w-full;
 

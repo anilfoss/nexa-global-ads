@@ -60,18 +60,119 @@
                     [data-slot="input"] {
                         @apply text-[1.125rem] md:text-[1.25rem] leading-tight md:leading-tight text-ellipsis;
                     }
+                    [data-slot="helperWrapper"],
+                    [data-slot="helper-wrapper"] {
+                        @apply hidden;
+                    }
+
+                    &.custom-group {
+                        @apply block;
+
+                        & > label {
+                            @apply text-black text-medium leading-6 table pr-0.5 -mt-1 mb-1;
+
+                            .required {
+                                @apply text-danger;
+                            }
+                        }
+                    }
+
+                    .PhoneInput {
+                        .PhoneInputCountry {
+                            @apply bg-white px-2 m-0 border-1 border-solid border-black border-opacity-20 h-11 min-h-11 rounded-[3px] rounded-tr-none rounded-br-none shadow-none;
+
+                            .PhoneInputCountrySelect {
+                                @apply text-base;
+                            }
+
+                            .PhoneInputCountryIcon {
+                                @apply bg-transparent w-7 h-auto aspect-video shadow-none;
+                            }
+                            .PhoneInputCountrySelectArrow {
+                            }
+                        }
+                        .PhoneInputInput {
+                            @apply bg-white text-[1.125rem] md:text-[1.25rem] leading-tight md:leading-tight px-3 border-1 border-l-0 border-solid border-black border-opacity-20 h-11 min-h-11 text-ellipsis rounded-[3px] rounded-tl-none rounded-bl-none shadow-none outline-none;
+                        }
+                    }
+
+                    .stdropdown-container {
+                        @apply font-body border-none rounded-none;
+
+                        .stdropdown-input {
+                            @apply bg-white items-stretch px-2 py-0 m-0 border-1 border-solid border-black border-opacity-20 h-11 min-h-11 rounded-[3px] shadow-none;
+
+                            input {
+                                @apply text-[1.125rem] md:text-[1.25rem] leading-tight md:leading-tight px-2 py-0 border-none outline-none;
+                            }
+                            .stdropdown-tools {
+                                @apply flex justify-center items-center w-4;
+
+                                .stdropdown-tool {
+                                    @apply border-b-1 border-r-1 border-black border-solid w-[0.4rem] h-[0.4rem] rotate-45 relative transition-all duration-200 ease-in-out;
+
+                                    svg {
+                                        @apply hidden;
+                                    }
+                                }
+                            }
+                        }
+
+                        .stdropdown-menu {
+                            .stdropdown-item {
+                                @apply text-base px-4 py-1 border-none outline-none;
+
+                                &.selected {
+                                    @apply bg-light-gray text-black;
+                                }
+                                &:hover {
+                                    @apply bg-light-gray;
+                                }
+                            }
+                        }
+                    }
+
+                    &.country-group {
+                        &.focus {
+                            .stdropdown-tool {
+                                // @apply rotate-[135deg] !important;
+                                @apply rotate-[225deg] !important;
+                            }
+                        }
+
+                        &.error {
+                            .stdropdown-container {
+                                .stdropdown-input {
+                                    @apply border-danger;
+                                }
+                            }
+                        }
+                    }
+
+                    &.select {
+                        [data-slot="trigger"] {
+                            @apply bg-white border-1 border-solid border-black border-opacity-20 h-11 min-h-11 rounded-[3px] shadow-none;
+
+                            [data-slot="innerWrapper"] {
+                                [data-slot="value"] {
+                                    @apply text-[1.125rem] md:text-[1.25rem] leading-tight md:leading-tight text-ellipsis;
+                                }
+                            }
+                        }
+                    }
 
                     &[data-invalid="true"] {
-                        [data-slot="input-wrapper"] {
+                        [data-slot="input-wrapper"],
+                        [data-slot="trigger"] {
                             @apply border-danger;
                             @apply bg-white !important;
                         }
                         [data-slot="label"] {
                             @apply text-black !important;
                         }
-                        [data-slot="helper-wrapper"] {
-                            @apply hidden;
-                        }
+                        // [data-slot="helper-wrapper"] {
+                        //     @apply hidden;
+                        // }
                     }
                 }
             }

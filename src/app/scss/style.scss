@@ -93,13 +93,41 @@ p {
     &.button-border-white {
         @apply bg-transparent hover:bg-white hover:text-green-dark border-white border-opacity-50;
     }
+
+    &.button-border-green {
+        @apply bg-transparent hover:bg-green-dark text-green-dark hover:text-white border-green-dark border-opacity-50 hover:opacity-100;
+    }
 }
 
 .radio-title {
     @apply flex;
 
-    .radio {
+    &.hide {
+        & > span {
+            @apply opacity-0 relative -left-4;
+        }
     }
-    .text {
+}
+
+.hidden-content {
+    @apply opacity-0;
+}
+
+// .title-animation {
+//     .chars {
+//         @apply opacity-0 relative top-10;
+//     }
+// }
+
+.desc-animation {
+    @apply opacity-0;
+    // @apply relative top-8 transition-all duration-500 delay-1000 ease-in-out;
+
+    .lines {
+        @apply block overflow-hidden;
+
+        .words {
+            @apply opacity-0 relative top-20;
+        }
     }
 }

@@ -105,3 +105,120 @@
         }
     }
 }
+
+.job-form {
+    @apply gap-4 mx-auto mb-4 max-w-[37rem];
+
+    .form-group {
+        @apply flex flex-col w-full;
+
+        .form-label {
+            @apply font-body text-black text-medium leading-6 table pr-0.5 -mt-1 mb-1 w-full;
+
+            .required {
+                @apply text-danger;
+            }
+
+            .optional {
+                @apply opacity-50;
+            }
+        }
+
+        .form-field {
+            .group {
+                [data-slot="input-wrapper"] {
+                    @apply border-1 border-solid border-black border-opacity-20 h-11 min-h-11 rounded-[3px] shadow-none;
+                    @apply bg-white !important;
+                }
+
+                [data-slot="input"] {
+                    @apply text-[1.125rem] md:text-[1.25rem] leading-tight md:leading-tight text-ellipsis;
+                }
+
+                textarea {
+                    @apply h-[4.875rem] max-h-[4.875rem] !important;
+                }
+
+                [data-slot="helper-wrapper"] {
+                    @apply hidden;
+                }
+
+                &[data-invalid="true"] {
+                    [data-slot="input-wrapper"] {
+                        @apply border-danger;
+                    }
+                    [data-slot="input"] {
+                        @apply text-danger border-danger !important;
+                    }
+                }
+            }
+        }
+
+        .error-text {
+            @apply text-sm text-danger border-danger mt-2;
+        }
+    }
+
+    .form-action {
+        @apply mt-4 w-full;
+
+        .btn-submit {
+            @apply ml-auto;
+        }
+    }
+
+    .accept-terms {
+        .wrapper {
+            @apply rounded-[3px];
+
+            &:before {
+                @apply border-1 border-green-dark rounded-[3px];
+            }
+
+            &::after {
+                @apply bg-green-dark;
+            }
+        }
+
+        &.error {
+            .wrapper {
+                &:before {
+                    @apply border-danger;
+                }
+            }
+        }
+    }
+
+    .cv-form-field {
+        @apply flex flex-col items-start gap-3 relative;
+
+        .cv-file-field {
+            @apply w-36 absolute top-0 left-0 z-[1] overflow-hidden opacity-0 cursor-pointer rounded-full;
+
+            &[data-invalid="true"] {
+                & ~ .cv-file-style {
+                    @apply border-danger;
+                }
+            }
+        }
+
+        .cv-file-style {
+            @apply font-heading text-base text-center px-6 py-2.5 border-1 border-black w-36 min-w-0 h-auto rounded-full;
+        }
+
+        .file-preview {
+            @apply flex items-center gap-3 mb-1 w-full;
+
+            .file-img {
+                @apply w-10 h-auto;
+            }
+
+            .file-name {
+                @apply text-sm;
+            }
+            .file-close {
+                @apply text-danger border-danger;
+            }
+        }
+    }
+}

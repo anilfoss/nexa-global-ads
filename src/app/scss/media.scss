@@ -1,0 +1,34 @@
+.section-media-hero {
+    .title {
+        & > span {
+            @apply inline;
+
+            .outer-span {
+                @apply inline sm:block;
+            }
+        }
+        span {
+            &.chars {
+                @apply opacity-0 relative top-10;
+            }
+
+            &.text-highlight {
+                @apply relative;
+
+                .chars {
+                    @apply text-gradient-1;
+                }
+            }
+        }
+    }
+
+    .description {
+        .lines {
+            @apply block overflow-hidden;
+
+            .words {
+                @apply opacity-0 relative top-20;
+            }
+        }
+    }
+}
