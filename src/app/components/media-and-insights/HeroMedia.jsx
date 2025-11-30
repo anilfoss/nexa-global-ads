@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState, useEffect, useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import Section from "../utils/Section";
 import Container from "../utils/Container";
 import Image from "next/image";
@@ -10,7 +10,7 @@ import { SplitText } from "gsap/SplitText";
 
 gsap.registerPlugin(useGSAP, SplitText);
 
-const HeroAbout = () => {
+const HeroMedia = () => {
     const videoRef = useRef(null);
     const [showPlaceholder, setShowPlaceholder] = useState(true);
 
@@ -32,41 +32,62 @@ const HeroAbout = () => {
 
     // 🔹 GSAP text animation
     useGSAP(() => {
-        const splitTitle = new SplitText(".section-about-hero .title", {
+        const splitTitle = new SplitText(".section-media-hero .title", {
             type: "lines, words, chars",
             tag: "span",
             charsClass: "chars",
         });
+        const splitDescription = new SplitText(
+            ".section-media-hero .description",
+            {
+                type: "lines, words",
+                tag: "span",
+                linesClass: "lines",
+                wordsClass: "words",
+            }
+        );
 
         const tl = gsap.timeline({ defaults: { ease: "power3.out" } });
 
-        tl.to(".title", { opacity: 1 }).to(splitTitle.chars, {
-            top: 0,
-            opacity: 1,
-            stagger: 0.05,
-            ease: "back.out(1.7)",
-        });
+        tl.to(".title", { opacity: 1 })
+            .to(splitTitle.chars, {
+                top: 0,
+                opacity: 1,
+                stagger: 0.05,
+                ease: "back.out(1.7)",
+            })
+            .to(".description", { opacity: 1 }, "-=0.5")
+            .to(
+                splitDescription.words,
+                {
+                    top: 0,
+                    opacity: 1,
+                    stagger: 0.02,
+                    duration: 1,
+                    ease: "back.out(0.8)",
+                },
+                "-=0.3"
+            );
 
         return () => {
             splitTitle.revert();
+            splitDescription.revert();
         };
     });
 
     return (
-        <Section className="section-about-hero content-end pt-28 md:pt-40 pb-12 md:pb-20 min-h-svh relative z-[1] overflow-hidden">
-            {/* Text and content */}
+        <Section className="section-media-hero content-end pt-28 md:pt-40 pb-12 md:pb-20 min-h-svh relative z-[1] overflow-hidden">
             <Container className="relative z-[2]">
-                <div className="relative">
-                    <h1 className="title text-white text-[clamp(2rem,0.9969rem+5.0157vw,3rem)] sm:text-[clamp(3rem,0.4803rem+6.2992vw,3.5rem)] md:text-[clamp(3rem,-1.5176rem+9.4118vw,4.5rem)] lg:text-[clamp(3.8rem,-0.4286rem+6.6071vw,7.5rem)] font-semibold sm:flex sm:flex-col opacity-0">
+                <div className="flex flex-col gap-4 relative">
+                    <h1 className="title text-white text-[clamp(2.4rem,1.7981rem+3.0094vw,3rem)] sm:text-[clamp(3rem,0.4803rem+6.2992vw,3.5rem)] md:text-[clamp(3rem,-1.5176rem+9.4118vw,4.5rem)] lg:text-[clamp(3.8rem,-0.4286rem+6.6071vw,7.5rem)] font-semibold sm:flex sm:flex-col opacity-0">
                         <span className="outer-span">
-                            Ai-Driven{" "}
-                            <span className="text-highlight">Defense.</span>{" "}
-                        </span>
-                        <span className="outer-span sm:indent-[2rem] md:indent-[8rem] lg:indent-[clamp(16rem,3.4286rem+19.6429vw,27rem)]">
-                            Human-Focused{" "}
-                            <span className="text-highlight">Safety.</span>
+                            Media and{" "}
+                            <span className="text-highlight">Insights</span>
                         </span>
                     </h1>
+                    <div className="description text-medium lg:text-[clamp(0.9rem,0.5rem+0.625vw,1.25rem)] text-white text-opacity-70 max-lg:mt-4 max-w-full lg:max-w-[22rem] xl:max-w-[24rem] opacity-0">
+                        Investor Intelligence & Industry Landscape
+                    </div>
                 </div>
             </Container>
 
@@ -82,7 +103,7 @@ const HeroAbout = () => {
                 }`}
             >
                 <Image
-                    src="/images/about-video-placeholder.jpg"
+                    src="/images/media-video-placeholder.jpg"
                     alt="Hero video placeholder"
                     fill
                     priority
@@ -100,10 +121,10 @@ const HeroAbout = () => {
                 playsInline
                 preload="auto"
             >
-                <source src="/images/about-video.mp4" type="video/mp4" />
+                <source src="/images/media-video.mp4" type="video/mp4" />
             </video>
         </Section>
     );
 };
 
-export default HeroAbout;
+export default HeroMedia;

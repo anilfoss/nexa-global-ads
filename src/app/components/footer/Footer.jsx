@@ -52,6 +52,10 @@ const footerData = {
             link: "/investor-relations",
         },
         {
+            title: "Media and Insights",
+            link: "/media-and-insights",
+        },
+        {
             title: "Careers",
             link: "/careers",
         },

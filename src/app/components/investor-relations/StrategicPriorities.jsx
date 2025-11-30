@@ -63,7 +63,7 @@ const StrategicPriorities = () => {
                                 href="/contact-us"
                                 className="button !px-7 max-sm:w-full"
                             >
-                                Request a Demo
+                                Get in Touch
                             </Button>
                         </div>
                         <div className="grow p-6 pl-0 md:p-10 md:pl-0 lg:pr-0 lg:pl-10 max-lg:border-r-2 border-solid border-black border-opacity-20">

@@ -77,7 +77,24 @@ const menuItems1 = [
     //     ],
     // },
     { id: 4, name: "Capabilities", href: "/capabilities" },
-    { id: 5, name: "Investor Relations", href: "/investor-relations" },
+    // { id: 5, name: "Investor Relations", href: "/investor-relations" },
+    {
+        id: 5,
+        name: "Investor Relations",
+        hasChildren: true,
+        children: [
+            {
+                id: 51,
+                title: "Investor Relations",
+                href: "/investor-relations",
+            },
+            {
+                id: 52,
+                title: "Media and Insights",
+                href: "/media-and-insights",
+            },
+        ],
+    },
     { id: 6, name: "Careers", href: "/careers" },
 ];
 
@@ -357,7 +374,11 @@ const Header = () => {
                                         <Link
                                             href={child.href}
                                             onClick={handleMenu}
-                                            className="block py-1 text-gray-600 hover:text-primary transition-colors"
+                                            className={`block py-1 text-gray-600 hover:text-primary transition-colors ${
+                                                pathname === child.href
+                                                    ? "active"
+                                                    : ""
+                                            }`}
                                         >
                                             {child.title}
                                         </Link>
@@ -370,10 +391,7 @@ const Header = () => {
 
                 {isMobile &&
                     menuItems2.map((item) => (
-                        <NavbarItem
-                            key={item?.id}
-                            className="text-large aaaaaa"
-                        >
+                        <NavbarItem key={item?.id} className="text-large">
                             <Link
                                 href={item.href}
                                 onClick={handleMenu}

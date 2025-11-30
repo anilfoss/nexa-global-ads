@@ -88,7 +88,7 @@ const MarketOpportunity = () => {
                                 href="/contact-us"
                                 className="button !px-7 max-sm:w-full"
                             >
-                                Request a Demo
+                                Get in Touch
                             </Button>
                         </div>
                     </div>

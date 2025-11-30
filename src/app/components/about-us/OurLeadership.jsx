@@ -63,7 +63,7 @@ const OurLeadership = () => {
     return (
         <Section
             id="board-of-directors"
-            className="section-our-leadership bg-overlay-4 text-white"
+            className="section-our-leadership bg-overlay-4 text-white overflow-hidden"
         >
             <div className="border-b-2 border-solid border-white border-opacity-20">
                 <Container>

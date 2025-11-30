@@ -55,7 +55,7 @@ const OurValues = () => {
     return (
         <Section
             id="our-values"
-            className="bg-light-gray border-t-2 border-solid border-black border-opacity-20"
+            className="bg-light-gray border-t-2 border-solid border-black border-opacity-20 overflow-hidden"
         >
             <div className="">
                 <Container>

@@ -12,8 +12,8 @@ const AnnualReport = () => {
                 <div className="bg-overlay-4 text-white flex max-lg:flex-col-reverse justify-between gap-6 lg:gap-10 p-6 md:p-8 lg:p-10 rounded-xl overflow-hidden">
                     <div className="max-w-[70rem]">
                         <h3 className="max-sm:text-[clamp(2.25rem,1.9992rem+1.2539vw,2.5rem)] text-white">
-                            FY2024 Annual Report - Performance, Progress and
-                            Outlook
+                            Reports<span className="font-body">:</span>{" "}
+                            Performance, Progress, Perspective and Purpose
                         </h3>
                         <p className="text-medium tracking-wider mt-4">
                             A comprehensive review of Nexa Global’s financial
@@ -23,17 +23,19 @@ const AnnualReport = () => {
                         <div className="button-wrapper flex flex-wrap gap-4 mt-10 md:mt-14">
                             <Button
                                 as={Link}
-                                href="/"
-                                className="button max-xl:grow lg:!px-14"
+                                href="/files/financials-media-and-insights.pdf"
+                                target="_blank"
+                                download={true}
+                                className="button button-border-white max-xl:grow lg:!px-14"
                             >
                                 Download Report
                             </Button>
                             <Button
                                 as={Link}
-                                href="/"
-                                className="button button-border-white max-xl:grow lg:!px-14"
+                                href="/media-and-insights"
+                                className="button max-xl:grow lg:!px-14 max-sm:whitespace-normal"
                             >
-                                See All Reports
+                                See Media and Insights
                             </Button>
                         </div>
                     </div>

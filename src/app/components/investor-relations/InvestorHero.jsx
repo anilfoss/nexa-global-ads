@@ -23,8 +23,8 @@ const InvestorHero = () => {
                     console.warn("Autoplay blocked:", err);
                 });
             }
-            // setShowPlaceholder(false);
-            setShowPlaceholder(true);
+            setShowPlaceholder(false);
+            // setShowPlaceholder(true);
         }, 500);
 
         return () => clearTimeout(timer);

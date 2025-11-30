@@ -48,7 +48,7 @@ export const solutionsData = [
         imgWidth: "1746",
         imgHeight: "945",
         buttons: [
-            { label: "Request a Demo", href: "/contact-us", primary: true },
+            { label: "Get in Touch", href: "/contact-us", primary: true },
         ],
     },
     {
@@ -64,7 +64,7 @@ export const solutionsData = [
         imgWidth: "1746",
         imgHeight: "945",
         buttons: [
-            { label: "Request a Demo", href: "/contact-us", primary: true },
+            { label: "Get in Touch", href: "/contact-us", primary: true },
         ],
     },
     {
@@ -80,7 +80,7 @@ export const solutionsData = [
         imgWidth: "1746",
         imgHeight: "945",
         buttons: [
-            { label: "Request a Demo", href: "/contact-us", primary: true },
+            { label: "Get in Touch", href: "/contact-us", primary: true },
             { label: "Solutions Comparison Guide", href: "/", primary: false },
         ],
     },
@@ -130,7 +130,7 @@ export const solutionsData = [
         imgWidth: "1746",
         imgHeight: "945",
         buttons: [
-            { label: "Request a Demo", href: "/contact-us", primary: true },
+            { label: "Get in Touch", href: "/contact-us", primary: true },
         ],
     },
 ];

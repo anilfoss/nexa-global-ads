@@ -16,7 +16,7 @@ const capabilitiesData = [
         image: "img-precision-military.jpg",
         imageWidth: "1024",
         imageHeight: "1536",
-        buttonTitle: "Request a Demo",
+        buttonTitle: "Get in Touch",
         buttonLink: "/contact-us",
     },
     {
@@ -26,7 +26,7 @@ const capabilitiesData = [
         image: "img-border-security.jpg",
         imageWidth: "1536",
         imageHeight: "1024",
-        buttonTitle: "Request a Demo",
+        buttonTitle: "Get in Touch",
         buttonLink: "/contact-us",
     },
     {
@@ -36,7 +36,7 @@ const capabilitiesData = [
         image: "img-power-plant.jpg",
         imageWidth: "1536",
         imageHeight: "1024",
-        buttonTitle: "Request a Demo",
+        buttonTitle: "Get in Touch",
         buttonLink: "/contact-us",
     },
     {
@@ -46,7 +46,7 @@ const capabilitiesData = [
         image: "img-airspace-management.jpg",
         imageWidth: "1536",
         imageHeight: "199",
-        buttonTitle: "Request a Demo",
+        buttonTitle: "Get in Touch",
         buttonLink: "/contact-us",
     },
     {
@@ -56,7 +56,7 @@ const capabilitiesData = [
         image: "img-refineries.jpg",
         imageWidth: "1536",
         imageHeight: "1024",
-        buttonTitle: "Request a Demo",
+        buttonTitle: "Get in Touch",
         buttonLink: "/contact-us",
     },
     {
@@ -66,7 +66,7 @@ const capabilitiesData = [
         image: "img-logistic.jpg",
         imageWidth: "1024",
         imageHeight: "1024",
-        buttonTitle: "Request a Demo",
+        buttonTitle: "Get in Touch",
         buttonLink: "/contact-us",
     },
     {
@@ -76,7 +76,7 @@ const capabilitiesData = [
         image: "img-stadium.jpg",
         imageWidth: "1536",
         imageHeight: "1024",
-        buttonTitle: "Request a Demo",
+        buttonTitle: "Get in Touch",
         buttonLink: "/contact-us",
     },
     {
@@ -86,7 +86,7 @@ const capabilitiesData = [
         image: "img-data-center.jpg",
         imageWidth: "1536",
         imageHeight: "1024",
-        buttonTitle: "Request a Demo",
+        buttonTitle: "Get in Touch",
         buttonLink: "/contact-us",
     },
 ];

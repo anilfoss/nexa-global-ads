@@ -1,16 +1,45 @@
 "use client";
 
-import React, { useState } from "react";
-import { Form, Input, Button, Textarea } from "@heroui/react";
+import React, { useEffect, useState } from "react";
+import {
+    Form,
+    Input,
+    Button,
+    Textarea,
+    Select,
+    SelectItem,
+} from "@heroui/react";
+import PhoneInput from "react-phone-number-input";
+import "react-phone-number-input/style.css";
+import { CountrySelect } from "react-country-state-city";
+import "react-country-state-city/dist/react-country-state-city.css";
+
+const departmentsList = [
+    { key: "global-product-support", label: "Global Product Support" },
+    { key: "us-product-support", label: "US Product Support" },
+    { key: "sales-or-general-enquiries", label: "Sales or General Enquiries" },
+    { key: "media-enquiries", label: "Media Enquiries" },
+    { key: "investor-enquiries", label: "Investor Enquiries" },
+    { key: "suppliers", label: "Suppliers" },
+];
+
+const sectorsList = [
+    { key: "military", label: "Military" },
+    { key: "government", label: "Government" },
+    { key: "public-safety", label: "Public Safety" },
+    { key: "critical-infrastructure", label: "Critical Infrastructure" },
+    { key: "private", label: "Private" },
+];
 
 const ContactForm = () => {
-    const [action, setAction] = useState(null);
+    // const [action, setAction] = useState(null);
     const [loading, setLoading] = useState(false);
     const [status, setStatus] = useState(null);
-    // const [status, setStatus] = useState({
-    //     type: "error",
-    //     message: "Something went wrong. Try again later.",
-    // });
+    const [phoneValue, setPhoneValue] = useState();
+    const [country, setCountry] = useState(null);
+    const [countryError, setCountryError] = useState(false);
+    const [countryArrow, setCountryArrow] = useState(false);
+    const [formKey, setFormKey] = useState(0);
 
     const validateInput = (value) => {
         if (value.trim() === "") {
@@ -21,57 +50,93 @@ const ContactForm = () => {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
+
         const formData = new FormData(e.currentTarget);
 
-        setLoading(true); // Show loader
+        setLoading(true);
         setStatus(null);
 
-        // need to delete start
+        // // need to delete start
         // console.log("formData = ", formData);
-        e.target.reset();
-        setLoading(false);
-        setStatus(null);
-        // need to delete end
+        // setLoading(false);
+        // setStatus(null);
+        // // need to delete end
 
-        // // Simulate 2-second loading before making request
-        // setTimeout(async () => {
-        //     try {
-        //         const response = await fetch(
-        //             "https://integraindia.com/next/post.php",
-        //             {
-        //                 method: "POST",
-        //                 body: formData,
-        //             }
-        //         );
+        if (!country) {
+            setCountryError(true);
+            setLoading(false);
+            return;
+        }
 
-        //         const result = await response.json();
-        //         if (response.ok) {
-        //             setStatus({ type: "success", message: result.success });
-        //             e.target.reset(); // Reset form fields
-        //         } else {
-        //             setStatus({ type: "error", message: result.error });
-        //         }
+        const emailValue = formData.get("email");
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        if (!emailRegex.test(emailValue)) {
+            setStatus({
+                type: "error",
+                message: "Please enter a valid email address.",
+            });
+            setLoading(false);
+            return;
+        }
 
-        //         // Hide message after 5 seconds
-        //         setTimeout(() => {
-        //             setStatus(null);
-        //         }, 5000);
-        //     } catch (error) {
-        //         setStatus({
-        //             type: "error",
-        //             message: "Something went wrong. Try again later.",
-        //         });
+        // phone and country fields doesn't auto bind
+        formData.set("phone", phoneValue || "");
+        formData.set("country", country?.name || "");
 
-        //         // Hide message after 5 seconds
-        //         setTimeout(() => {
-        //             setStatus(null);
-        //         }, 5000);
+        // Simulate 2-second loading before making request
+        setTimeout(async () => {
+            try {
+                const response = await fetch(
+                    "https://nexaglobalads.com/post-contact.php",
+                    {
+                        method: "POST",
+                        body: formData,
+                    }
+                );
 
-        //         console.log("error = ", error);
-        //     } finally {
-        //         setLoading(false); // Hide loader after request completes
-        //     }
-        // }, 2000); // 2-second delay before sending the request
+                // const response = await fetch(
+                //     "/post-contact.php",
+                //     {
+                //         method: "POST",
+                //         body: formData,
+                //     }
+                // );
+
+                const result = await response.json();
+                if (response.ok) {
+                    setStatus({ type: "success", message: result.success });
+                    e.target.reset(); // Reset form fields
+
+                    // Reset controlled fields
+                    setPhoneValue("");
+                    setCountry(null);
+                    setCountryError(false);
+                    setCountryArrow(false);
+                    setFormKey((prev) => prev + 1); // 👈 Force UI reset
+                } else {
+                    setStatus({ type: "error", message: result.error });
+                }
+
+                // Hide message after 5 seconds
+                setTimeout(() => {
+                    setStatus(null);
+                }, 5000);
+            } catch (error) {
+                setStatus({
+                    type: "error",
+                    message: "Something went wrong. Try again later.",
+                });
+
+                // Hide message after 5 seconds
+                setTimeout(() => {
+                    setStatus(null);
+                }, 5000);
+
+                console.log("error = ", error);
+            } finally {
+                setLoading(false); // Hide loader after request completes
+            }
+        }, 2000); // 2-second delay before sending the request
     };
 
     return (
@@ -83,10 +148,16 @@ const ContactForm = () => {
             </p>
 
             <Form
-                className=""
+                key={formKey}
                 validationBehavior="native"
-                onReset={() => setAction("reset")}
                 onSubmit={handleSubmit}
+                onInvalid={(e) => {
+                    if (!country) {
+                        setCountryError(true);
+                        return;
+                    }
+                    setCountryError(false);
+                }}
             >
                 <div className="inner">
                     <Input
@@ -125,26 +196,37 @@ const ContactForm = () => {
                         className="half"
                     />
 
-                    <Input
-                        type="text"
-                        name="phone"
-                        label="Phone Number"
-                        labelPlacement="outside"
-                        placeholder=" "
-                        validate={validateInput}
-                        className="half"
-                    />
+                    <div className="group custom-group half">
+                        <label htmlFor="">Phone Number</label>
+                        <PhoneInput
+                            name="phone"
+                            label="Phone Number"
+                            international
+                            countryCallingCodeEditable={false}
+                            defaultCountry="IN"
+                            value={phoneValue}
+                            onChange={setPhoneValue}
+                        />
+                    </div>
 
-                    <Input
-                        type="text"
-                        name="country"
-                        label="Country"
-                        labelPlacement="outside"
-                        placeholder=" "
-                        isRequired
-                        errorMessage="Please enter your country name"
-                        validate={validateInput}
-                    />
+                    <div
+                        className={`group custom-group country-group ${
+                            countryError ? "error" : ""
+                        } ${countryArrow ? "focus" : ""}`}
+                        onFocusCapture={() => setCountryArrow(true)}
+                        onBlurCapture={() => setCountryArrow(false)}
+                    >
+                        <label htmlFor="">
+                            Country <span className="required">*</span>
+                        </label>
+                        <CountrySelect
+                            name="country"
+                            value={country}
+                            required
+                            onChange={(_country) => setCountry(_country)}
+                            showFlag={false}
+                        />
+                    </div>
 
                     <Input
                         type="text"
@@ -170,27 +252,35 @@ const ContactForm = () => {
                         className="half"
                     />
 
-                    <Input
-                        type="text"
+                    <Select
                         label="Department"
                         name="department"
                         labelPlacement="outside"
                         placeholder=" "
                         isRequired
-                        errorMessage="Please enter your department"
-                        validate={validateInput}
-                    />
+                        className="select"
+                    >
+                        {departmentsList.map((item) => (
+                            <SelectItem key={item.key} data-lenis-prevent={""}>
+                                {item.label}
+                            </SelectItem>
+                        ))}
+                    </Select>
 
-                    <Input
-                        type="text"
+                    <Select
                         label="Sector"
                         name="sector"
                         labelPlacement="outside"
                         placeholder=" "
                         isRequired
-                        errorMessage="Please enter your sector"
-                        validate={validateInput}
-                    />
+                        className="select"
+                    >
+                        {sectorsList.map((item) => (
+                            <SelectItem key={item.key} data-lenis-prevent={""}>
+                                {item.label}
+                            </SelectItem>
+                        ))}
+                    </Select>
 
                     <Textarea
                         name="message"
@@ -232,71 +322,3 @@ const ContactForm = () => {
 };
 
 export default ContactForm;
-
-// =======================================================================
-
-// "use client";
-
-// import React, { useState } from "react";
-// import { Button, Form, Input } from "@heroui/react";
-
-// const ContactForm = () => {
-//     const [errors, setErrors] = useState({});
-
-//     const onSubmit = (e) => {
-//         e.preventDefault();
-
-//         const data = Object.fromEntries(new FormData(e.currentTarget));
-
-//         if (!data.username) {
-//             setErrors({ username: "Username is required" });
-
-//             return;
-//         }
-
-//         const result = callServer(data);
-
-//         setErrors(result.errors);
-//     };
-
-//     return (
-//         <div className="form-wrapper">
-//             <p>
-//                 For specific support, get a demo or to learn more about Nexa's
-//                 CUaS capabilities, send us a message and our team will get back
-//                 to you shortly.
-//             </p>
-
-//             <Form
-//                 validationErrors={errors}
-//                 onSubmit={onSubmit}
-//                 className="w-full max-w-xs flex flex-col gap-4"
-//             >
-//                 <Input
-//                     isRequired
-//                     label="Username"
-//                     labelPlacement="outside"
-//                     name="username"
-//                     placeholder="Enter your username"
-//                     type="text"
-//                 />
-
-//                 <Input
-//                     isRequired
-//                     label="Email"
-//                     labelPlacement="outside"
-//                     name="email"
-//                     placeholder="Enter your email"
-//                     type="email"
-//                 />
-//                 <div className="flex gap-2">
-//                     <Button color="primary" type="submit">
-//                         Submit
-//                     </Button>
-//                 </div>
-//             </Form>
-//         </div>
-//     );
-// };
-
-// export default ContactForm;
