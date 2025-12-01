@@ -46,19 +46,33 @@ const OurLeadership = () => {
     const scrollRef = useRef(null);
 
     // Scroll active card into view
+
     useEffect(() => {
         if (!scrollRef.current) return;
-        const activeCard = scrollRef.current.querySelector(
-            ".leadership-card.active"
-        );
-        if (activeCard) {
-            activeCard.scrollIntoView({
-                behavior: "smooth",
-                inline: "start", // aligns the card to the left
-                block: "nearest",
-            });
-        }
+        const activeCard = scrollRef.current.querySelector(".active");
+        if (!activeCard) return;
+
+        const container = scrollRef.current;
+
+        container.scrollLeft =
+            activeCard.offsetLeft -
+            container.clientWidth / 2 +
+            activeCard.clientWidth / 2;
     }, [selectedLeader]);
+
+    // useEffect(() => {
+    //     if (!scrollRef.current) return;
+    //     const activeCard = scrollRef.current.querySelector(
+    //         ".leadership-card.active"
+    //     );
+    //     if (activeCard) {
+    //         activeCard.scrollIntoView({
+    //             behavior: "smooth",
+    //             inline: "start", // aligns the card to the left
+    //             block: "nearest",
+    //         });
+    //     }
+    // }, [selectedLeader]);
 
     return (
         <Section
@@ -106,7 +120,6 @@ const OurLeadership = () => {
                                             src={`/images/${leadership.photo}`}
                                             alt={leadership.name}
                                             fill
-                                            priority
                                             unoptimized
                                             className={`photo !w-full !h-auto !static rounded-none transition-all duration-300 ease-in-out 
                                             ${
