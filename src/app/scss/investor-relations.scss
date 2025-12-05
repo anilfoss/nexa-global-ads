@@ -99,6 +99,20 @@
             }
         }
     }
+
+    .desc-animation1,
+    .desc-animation2,
+    .desc-animation3 {
+        @apply opacity-0;
+
+        .lines {
+            @apply block overflow-hidden;
+
+            .words {
+                @apply opacity-0 relative top-20;
+            }
+        }
+    }
 }
 
 .section-key-highlights {

@@ -14,8 +14,26 @@ body {
                 header {
                     ul {
                         & > li {
-                            & > a {
+                            & > a,
+                            & > button {
                                 @apply text-black;
+
+                                svg {
+                                    path {
+                                        @apply fill-black;
+                                    }
+                                }
+
+                                &:hover,
+                                &.active {
+                                    @apply text-green-dark;
+
+                                    svg {
+                                        path {
+                                            @apply fill-green-dark;
+                                        }
+                                    }
+                                }
                             }
                         }
 
@@ -33,6 +51,11 @@ body {
                             & > li {
                                 & > a {
                                     @apply text-white;
+
+                                    &:hover,
+                                    &.active {
+                                        @apply text-green-light;
+                                    }
                                 }
                             }
                         }
@@ -99,6 +122,23 @@ body {
 
                 &:first-child {
                     @apply border-t-0 pt-0 mt-0;
+                }
+            }
+
+            .left-wrapper {
+                & > * {
+                    @apply opacity-0;
+                }
+            }
+
+            .right-wrapper {
+                h5,
+                p,
+                ul > li {
+                    // @apply opacity-0 relative top-8;
+                }
+                & > * {
+                    @apply opacity-0 relative top-8;
                 }
             }
         }

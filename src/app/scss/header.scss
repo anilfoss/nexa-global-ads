@@ -79,7 +79,8 @@ nav {
     @apply font-body lg:mt-5 xl:mt-[clamp(1.5rem,4.0098rem+-3.1373vw,1rem)] 2xl:mt-[1.45rem];
 
     [data-slot="content"] {
-        @apply bg-[#DEF6D1CC] p-0;
+        // @apply bg-[#DEF6D1CC] p-0;
+        @apply bg-green-light p-0;
     }
     [data-slot="base"] {
         @apply p-4;

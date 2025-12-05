@@ -32,3 +32,17 @@
         }
     }
 }
+
+.section-global-security {
+    .desc-animation1 {
+        @apply opacity-0;
+
+        .lines {
+            @apply block overflow-hidden;
+
+            .words {
+                @apply opacity-0 relative top-20;
+            }
+        }
+    }
+}

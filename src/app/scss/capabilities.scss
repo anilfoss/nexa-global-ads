@@ -44,15 +44,29 @@
                 [data-slot="tab"] {
                     @apply font-heading text-[1.25rem] md:text-[1.125rem] lg:text-[1.25rem] xl:text-[1.5rem] text-left leading-tight md:leading-tight flex justify-start items-start p-6 md:pr-5 md:pl-0 md:py-[0.75rem] 2xl:py-[1.125rem] w-auto md:w-full h-auto opacity-20 transition-all duration-300 ease-in-out;
 
-                    &:before {
-                        @apply content-['-'] max-md:hidden pr-0 max-w-0 overflow-hidden transition-all duration-300 ease-in-out;
+                    // &:before {
+                    //     @apply content-['-'] max-md:hidden pr-0 max-w-0 overflow-hidden transition-all duration-300 ease-in-out;
+                    // }
+
+                    [data-slot="tabContent"] {
+                        @apply flex opacity-0 relative top-8;
+
+                        &:before {
+                            @apply content-['-'] max-md:hidden pr-0 max-w-0 overflow-hidden transition-all duration-300 ease-in-out;
+                        }
                     }
 
                     &[data-selected="true"] {
                         @apply opacity-100;
 
-                        &:before {
-                            @apply pr-2 max-w-full;
+                        // &:before {
+                        //     @apply pr-2 max-w-full;
+                        // }
+
+                        [data-slot="tabContent"] {
+                            &:before {
+                                @apply pr-2 max-w-full;
+                            }
                         }
                     }
 
@@ -78,9 +92,8 @@
                 @apply h-full relative z-[1];
 
                 figure {
-                    // @apply w-full h-full max-h-[55.5rem] relative rounded-2xl overflow-hidden;
-                    @apply w-full h-[48rem] sm:h-[80vw] md:h-[42rem] xl:h-[45rem] 2xl:h-[55.5rem] relative rounded-2xl overflow-hidden;
-                    // @apply w-full h-full xl:h-[45rem] 2xl:h-[55.5rem] relative rounded-2xl overflow-hidden;
+                    // @apply w-full h-[48rem] sm:h-[80vw] md:h-[42rem] xl:h-[45rem] 2xl:h-[55.5rem] relative rounded-2xl overflow-hidden;
+                    @apply w-full h-[48rem] sm:h-[80vw] md:h-[42rem] xl:h-[45rem] 2xl:h-[55.5rem] opacity-0 relative top-8 rounded-2xl overflow-hidden;
 
                     &:before {
                         @apply content-[''] bg-overlay-3 absolute inset-0 z-0;
@@ -92,6 +105,10 @@
                 }
                 .content-wrapper {
                     @apply text-white p-6 xl:p-8 2xl:p-10 w-full absolute left-0 bottom-0 z-[1];
+
+                    & > * {
+                        @apply opacity-0 relative top-8;
+                    }
                 }
             }
         }
@@ -109,7 +126,7 @@
                 @apply bg-light-gray flex flex-col justify-between border-1 border-solid border-black border-opacity-20 w-full h-full;
 
                 .image {
-                    @apply w-full h-auto;
+                    @apply w-full h-auto opacity-0 relative top-8;
                 }
 
                 .content {
@@ -127,6 +144,10 @@
                         .button {
                             @apply text-[1.125rem] md:text-[1.125rem] xl:text-[1.125rem] 2xl:text-[1.25rem];
                         }
+                    }
+
+                    & > * {
+                        @apply opacity-0 relative top-8;
                     }
                 }
             }
