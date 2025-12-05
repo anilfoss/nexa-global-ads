@@ -8,6 +8,12 @@ import Image from "next/image";
 import { Button } from "@heroui/react";
 import Link from "next/link";
 import parse from "html-react-parser";
+import gsap from "gsap";
+import { useGSAP } from "@gsap/react";
+import ScrollTrigger from "gsap/ScrollTrigger";
+import { SplitText } from "gsap/SplitText";
+
+gsap.registerPlugin(useGSAP, ScrollTrigger, SplitText);
 
 const technologyData = [
     {
@@ -60,12 +66,91 @@ const technologyData = [
 ];
 
 const OurTechnology = () => {
+    // gsap
+    useGSAP(() => {
+        const radioTitle = gsap.utils.toArray(
+            ".section-our-technology .radio-title > *"
+        );
+
+        const tl = gsap.timeline({
+            scrollTrigger: {
+                trigger: ".section-our-technology",
+                start: "top 70%",
+                markers: false,
+            },
+        });
+
+        tl.to(radioTitle, {
+            left: 0,
+            opacity: 1,
+            duration: 0.3,
+            stagger: 0.1,
+            ease: "power3.inout",
+        });
+    }, []);
+
+    useGSAP(() => {
+        const box = gsap.utils.toArray(
+            ".section-our-technology .box-wrapper .box"
+        );
+        const boxImage = gsap.utils.toArray(
+            ".section-our-technology .box-wrapper .box .inner .image"
+        );
+        const boxContent = gsap.utils.toArray(
+            ".section-our-technology .box-wrapper .box .inner .content > *"
+        );
+
+        const tl = gsap.timeline({
+            scrollTrigger: {
+                trigger: ".section-our-technology",
+                start: "top 50%",
+                markers: false,
+            },
+        });
+
+        tl.to(
+            box,
+            {
+                top: 0,
+                opacity: 1,
+                duration: 0.5,
+                stagger: 0.5,
+                ease: "power3.inout",
+            },
+            "a"
+        )
+            .to(
+                boxImage,
+                {
+                    top: 0,
+                    opacity: 1,
+                    duration: 0.5,
+                    delay: 0.75,
+                    stagger: 0.5,
+                    ease: "back.out(1.7)",
+                },
+                "a"
+            )
+            .to(
+                boxContent,
+                {
+                    top: 0,
+                    opacity: 1,
+                    duration: 0.5,
+                    delay: 1,
+                    stagger: 0.2,
+                    ease: "power3.inout",
+                },
+                "a"
+            );
+    }, []);
+
     return (
         <Section className="section-our-technology">
             <div className="border-b-2 border-solid border-black border-opacity-20">
                 <Container>
                     <div className="radio-title-wrapper max-md:px-6 pt-6 md:pt-12 2xl:pt-16 pb-4 max-md:-mx-6 md:border-r-2 border-solid border-black border-opacity-20 md:w-[30%] xl:w-[30%] 2xl:w-[35%]">
-                        <RadioTitle title="Our Technology" />
+                        <RadioTitle title="Our Technology" className="hide" />
                     </div>
                 </Container>
             </div>
@@ -77,7 +162,7 @@ const OurTechnology = () => {
                             return (
                                 <div
                                     key={item.id}
-                                    className={`box ${item.class}`}
+                                    className={`box opacity-0 relative top-8 ${item.class}`}
                                 >
                                     <div className="inner">
                                         <Image

@@ -289,7 +289,13 @@ const Header = () => {
                                                 <div className="p-0">
                                                     <Link
                                                         href={child.href}
-                                                        className="menu-link block font-semibold text-gray-800 hover:text-primary transition-colors"
+                                                        // className="menu-link block font-semibold text-gray-800 hover:text-primary transition-colors"
+                                                        className={`menu-link block font-semibold text-gray-800 hover:text-primary transition-colors ${
+                                                            pathname ===
+                                                            child.href
+                                                                ? "active"
+                                                                : ""
+                                                        }`}
                                                     >
                                                         {child.title}
                                                     </Link>

@@ -57,10 +57,7 @@ const HeroCareers = () => {
             {/* Text and content */}
             <Container className="relative z-[2]">
                 <div className="relative">
-                    <h1
-                        className="title text-white text-[clamp(2.4rem,1.7981rem+3.0094vw,3rem)] sm:text-[clamp(3rem,0.4803rem+6.2992vw,3.5rem)] md:text-[clamp(3rem,-1.5176rem+9.4118vw,4.5rem)] lg:text-[clamp(3.8rem,-0.4286rem+6.6071vw,7.5rem)] font-semibold sm:flex sm:flex-col opacity-0"
-                        // className="title text-white text-[clamp(2rem,0.9969rem+5.0157vw,3rem)] sm:text-[clamp(3rem,0.4803rem+6.2992vw,3.5rem)] md:text-[clamp(3rem,-1.5176rem+9.4118vw,4.5rem)] lg:text-[clamp(3.8rem,-0.4286rem+6.6071vw,7.5rem)] font-semibold sm:flex sm:flex-col opacity-0"
-                    >
+                    <h1 className="title text-white text-[clamp(2.4rem,1.7981rem+3.0094vw,3rem)] sm:text-[clamp(3rem,0.4803rem+6.2992vw,3.5rem)] md:text-[clamp(3rem,-1.5176rem+9.4118vw,4.5rem)] lg:text-[clamp(3.8rem,-0.4286rem+6.6071vw,7.5rem)] font-semibold sm:flex sm:flex-col opacity-0">
                         <span className="outer-span">
                             Join Our{" "}
                             <span className="text-highlight">Force</span>

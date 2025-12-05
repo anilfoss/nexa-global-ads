@@ -7,6 +7,12 @@ import RadioTitle from "../utils/RadioTitle";
 import { Accordion, AccordionItem } from "@heroui/react";
 import parse from "html-react-parser";
 import Image from "next/image";
+import gsap from "gsap";
+import { useGSAP } from "@gsap/react";
+import ScrollTrigger from "gsap/ScrollTrigger";
+import { SplitText } from "gsap/SplitText";
+
+gsap.registerPlugin(useGSAP, ScrollTrigger, SplitText);
 
 const productsData = [
     {
@@ -92,13 +98,49 @@ const productsData = [
 ];
 
 const OurProducts = () => {
+    // gsap
+    useGSAP(() => {
+        const radioTitle = gsap.utils.toArray(
+            ".section-our-products .radio-title > *"
+        );
+
+        const accordionItems = gsap.utils.toArray(
+            ".products-accordion .accordion-item"
+        );
+
+        const tl = gsap.timeline({
+            scrollTrigger: {
+                trigger: ".section-our-products",
+                start: "top 70%",
+                markers: false,
+            },
+        });
+
+        tl.to(radioTitle, {
+            left: 0,
+            opacity: 1,
+            duration: 0.3,
+            stagger: 0.1,
+            ease: "power3.inout",
+        });
+
+        tl.to(accordionItems, {
+            top: 0,
+            opacity: 1,
+            duration: 0.5,
+            delay: 0.5,
+            stagger: 0.3,
+            ease: "power3.inout",
+        });
+    });
+
     return (
         <Section className="section-our-products">
             <div className="border-b-2 border-solid border-black border-opacity-20">
                 <Container>
                     <div className="flex">
                         <div className="pt-6 md:pt-12 2xl:pt-16 pb-4 w-full">
-                            <RadioTitle title="Our Products" />
+                            <RadioTitle title="Our Products" className="hide" />
                         </div>
                         {/* <div className="grow"></div> */}
                     </div>
@@ -121,7 +163,7 @@ const OurProducts = () => {
                                     aria-label={`accordion-${product.id}`}
                                     title={parse(product.title)}
                                     keepContentMounted
-                                    className="accordion-item"
+                                    className="accordion-item opacity-0 relative top-8"
                                 >
                                     <div className="inner">
                                         {product?.image && (

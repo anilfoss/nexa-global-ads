@@ -1,36 +1,21 @@
+"use client";
+
 import React from "react";
 import Section from "../utils/Section";
 import Container from "../utils/Container";
 import RadioTitle from "../utils/RadioTitle";
 import parse from "html-react-parser";
 import Image from "next/image";
+import gsap from "gsap";
+import { useGSAP } from "@gsap/react";
+import ScrollTrigger from "gsap/ScrollTrigger";
+import { SplitText } from "gsap/SplitText";
 
-// const keyData = [
-//     {
-//         num: "<span class='font-body'>+</span>45<span class='font-body'>%</span>",
-//         title: "Market Growth",
-//         desc: "YoY growth in C-UAS demand across government and enterprise sectors",
-//     },
-//     {
-//         num: "12<span class='font-body'>+</span>",
-//         title: "Global Reach",
-//         desc: "Multi-region deployments across Asia, Middle East, and EU",
-//     },
-//     {
-//         num: "68<span class='font-body'>%</span>",
-//         title: "Recurring Revenue",
-//         desc: "Recurring revenue from SLAs and AI model updates",
-//     },
-//     {
-//         num: "15<span class='font-body'>+</span>",
-//         title: "IP Portfolio",
-//         desc: "Strong technology IP portfolio and global partnerships",
-//     },
-// ];
+gsap.registerPlugin(useGSAP, ScrollTrigger, SplitText);
 
 const cardsData = [
     {
-        num: `25<span className="font-body">%</span>`,
+        num: `<span class="count">25</span><span class="font-body">%</span>`,
         title: "Market Growth",
         desc: "YoY growth in C-UAS demand across government and enterprise sectors",
         img: "img-drone.svg",
@@ -45,7 +30,7 @@ const cardsData = [
         class: "card-green",
     },
     {
-        num: `19<span className="font-body">+</span>`,
+        num: `<span class="count">19</span><span class="font-body">+</span>`,
         title: "Global Reach",
         desc: "Multi-region deployments across Asia, Middle East, and EU",
         img: "img-global-reach.svg",
@@ -60,7 +45,7 @@ const cardsData = [
         class: "card-brown",
     },
     {
-        num: `107<span className="font-body">%</span>`,
+        num: `<span class="count">107</span><span class="font-body">%</span>`,
         title: "Recurring Growth",
         desc: "Recurring revenue from SLAs and AI model updates",
         img: "img-coins.svg",
@@ -75,7 +60,7 @@ const cardsData = [
         class: "card-blue",
     },
     {
-        num: `15<span className="font-body">+</span>`,
+        num: `<span class="count">15</span><span class="font-body">+</span>`,
         title: "IP Portfolio",
         desc: "Strong technology IP portfolio and global partnerships",
         img: "img-portfolio.svg",
@@ -92,13 +77,144 @@ const cardsData = [
 ];
 
 const KeyHighlights = () => {
+    // gsap
+    useGSAP(() => {
+        const ctx = gsap.context(() => {
+            const radioTitle = gsap.utils.toArray(
+                ".section-key-highlights .radio-title > *"
+            );
+            const splitDescription1 = new SplitText(
+                ".section-key-highlights h3.desc-animation",
+                {
+                    type: "lines, words",
+                    tag: "span",
+                    linesClass: "lines",
+                    wordsClass: "words",
+                }
+            );
+            const boxes = gsap.utils.toArray(
+                ".section-key-highlights .card-wrapper .card"
+            );
+            const num = gsap.utils.toArray(
+                ".section-key-highlights .card-wrapper .card .num"
+            );
+            const counts = gsap.utils.toArray(
+                ".section-key-highlights .card-wrapper .card .num .count"
+            );
+
+            // Store original values + reset text before scroll animation starts
+            counts.forEach((count) => {
+                const finalValue = parseInt(count.innerText);
+                count.dataset.value = finalValue; // store
+                count.innerText = 1; // set initial
+            });
+
+            const content = gsap.utils.toArray(
+                ".section-key-highlights .card-wrapper .card .bottom > *"
+            );
+            const image = gsap.utils.toArray(
+                ".section-key-highlights .card-wrapper .card .image"
+            );
+
+            const tl = gsap.timeline({
+                scrollTrigger: {
+                    trigger: ".section-key-highlights",
+                    start: "top 50%",
+                    markers: false,
+                },
+            });
+
+            tl.to(radioTitle, {
+                left: 0,
+                opacity: 1,
+                duration: 0.3,
+                stagger: 0.1,
+                ease: "power3.inout",
+            })
+                .to(".section-key-highlights h3.desc-animation", {
+                    opacity: 1,
+                })
+                .to(splitDescription1.words, {
+                    top: 0,
+                    opacity: 1,
+                    duration: 1,
+                    stagger: 0.05,
+                    ease: "back.out(0.8)",
+                })
+                .to(
+                    boxes,
+                    {
+                        top: 0,
+                        opacity: 1,
+                        duration: 1,
+                        stagger: 0.3,
+                        ease: "back.out(0.8)",
+                    },
+                    "-=0.5"
+                )
+                .to(
+                    num,
+                    {
+                        top: 0,
+                        opacity: 1,
+                        duration: 0.5,
+                        stagger: 0.1,
+                        ease: "power3.inout",
+                        onComplete: () => {
+                            counts.forEach((count) => {
+                                gsap.to(count, {
+                                    innerText: count.dataset.value,
+                                    duration: 1.5,
+                                    ease: "power3.out",
+                                    snap: "innerText",
+                                    stagger: 0.2,
+                                });
+                            });
+                        },
+                    },
+                    "-=0.9"
+                )
+                .to(
+                    content,
+                    {
+                        top: 0,
+                        opacity: 1,
+                        duration: 0.5,
+                        stagger: 0.1,
+                        ease: "power3.inout",
+                    },
+                    "-=0.5"
+                )
+                .to(
+                    image,
+                    {
+                        top: 0,
+                        opacity: 1,
+                        duration: 0.5,
+                        stagger: 0.1,
+                        ease: "back.out(0.8)",
+                    },
+                    "-=0.5"
+                );
+
+            return () => {
+                splitDescription1.revert();
+            };
+        });
+
+        return () => ctx.revert();
+    }, []);
+
     return (
         <Section className="section-key-highlights bg-white">
             <div className="border-b-2 border-solid border-black border-opacity-20">
                 <Container>
                     <div className="flex">
                         <div className="pt-6 md:pt-12 2xl:pt-16 pb-4 border-r-2 border-solid border-black border-opacity-20 pr-6 w-full lg:w-52 lg:min-w-52 2xl:w-60 2xl:min-w-60">
-                            <RadioTitle title="Key Highlights" />
+                            <RadioTitle
+                                title="Key Highlights"
+                                className="hide"
+                            />
                         </div>
                         <div className="grow"></div>
                     </div>
@@ -109,47 +225,30 @@ const KeyHighlights = () => {
                     <div className="flex flex-row-reverse lg:flex-row">
                         <div className="border-r-2 border-solid border-black border-opacity-20 lg:w-52 lg:min-w-52 2xl:w-60 2xl:min-w-60"></div>
                         <div className="grow p-6 md:p-10 md:pr-8 lg:pr-0 max-md:pr-6 max-lg:!pl-0">
-                            <h3 className="leading-snug md:leading-normal">
+                            <h3 className="desc-animation leading-snug md:leading-normal">
                                 Strategic positioning in the global defense
                                 technology landscape
                             </h3>
-
-                            {/* <div className="flex flex-wrap pb-4 md:pb-6 -mx-2 -mb-6 md:-mb-10 mt-8 md:mt-12 xl:mt-16">
-                                {keyData.map((item, index) => {
-                                    return (
-                                        <div
-                                            key={index}
-                                            className="text-center px-2 mb-6 md:mb-10 w-full sm:w-[50%] xl:w-[25%]"
-                                        >
-                                            <div className="font-heading text-[3.5rem] md:text-[4rem] lg:text-[4.5rem] xl:text-[5rem] 2xl:text-[6.25rem] leading-none">
-                                                {parse(item.num)}
-                                            </div>
-                                            <h5 className="font-body text-[1.5rem] md:text-[2rem] xl:text-[1.75rem] 2xl:text-[2rem] font-medium mt-4 xl:mt-6">
-                                                {item.title}
-                                            </h5>
-                                            <p className="text-[1.125rem] md:text-[1.25rem] xl:text-[1.125rem] 2xl:text-[1.25rem] mx-auto mt-2 xl:mt-3 max-w-80">
-                                                {item.desc}
-                                            </p>
-                                        </div>
-                                    );
-                                })}
-                            </div> */}
 
                             <div className="card-wrapper">
                                 {cardsData?.map((card, index) => {
                                     return (
                                         <div
                                             key={index}
-                                            className={`card ${card.class}`}
+                                            className={`card opacity-0 relative top-8 ${card.class}`}
                                         >
-                                            <div className="inner ">
+                                            <div className="inner overflow-hidden">
                                                 <div className="left">
-                                                    <div className="num">
+                                                    <div className="num opacity-0 relative top-8">
                                                         {parse(card.num)}
                                                     </div>
                                                     <div className="bottom">
-                                                        <h5>{card.title}</h5>
-                                                        <p>{card.desc}</p>
+                                                        <h5 className="opacity-0 relative top-8">
+                                                            {card.title}
+                                                        </h5>
+                                                        <p className="opacity-0 relative top-8">
+                                                            {card.desc}
+                                                        </p>
                                                     </div>
                                                 </div>
                                                 <div className="right">
@@ -159,7 +258,7 @@ const KeyHighlights = () => {
                                                         width={card.imgWidth}
                                                         height={card.imgHeight}
                                                         unoptimized
-                                                        className="image"
+                                                        className="image opacity-0 relative top-8"
                                                     />
                                                 </div>
 

@@ -8,6 +8,12 @@ import { Button, Tab, Tabs } from "@heroui/react";
 import Image from "next/image";
 import Link from "next/link";
 import parser from "html-react-parser";
+import gsap from "gsap";
+import { useGSAP } from "@gsap/react";
+import ScrollTrigger from "gsap/ScrollTrigger";
+import { SplitText } from "gsap/SplitText";
+
+gsap.registerPlugin(useGSAP, ScrollTrigger, SplitText);
 
 export const solutionsData = [
     {
@@ -180,12 +186,98 @@ const OurSolutions = () => {
         scrollActiveTabIntoView();
     }, [selected]);
 
+    // gsap
+    useGSAP(() => {
+        const radioTitle = gsap.utils.toArray(
+            ".section-our-solutions .radio-title > *"
+        );
+
+        const tl = gsap.timeline({
+            scrollTrigger: {
+                trigger: ".section-our-solutions",
+                start: "top 70%",
+                markers: false,
+            },
+        });
+
+        tl.to(radioTitle, {
+            left: 0,
+            opacity: 1,
+            duration: 0.3,
+            stagger: 0.1,
+            ease: "power3.inout",
+        });
+    }, []);
+
+    useGSAP(() => {
+        const ctx = gsap.context(() => {
+            const tabTitles = gsap.utils.toArray(
+                ".product-tabs-wrapper [data-slot='tabList'] > button .text"
+            );
+            const tabImage = gsap.utils.toArray(
+                ".product-tabs-wrapper [data-slot='panel'] .inner figure .image"
+            );
+            const tabContent = gsap.utils.toArray(
+                ".product-tabs-wrapper [data-slot='panel'] .inner div *"
+            );
+
+            const tl = gsap.timeline({
+                scrollTrigger: {
+                    trigger: ".section-our-solutions",
+                    start: "top 50%",
+                    markers: false,
+                },
+            });
+
+            tl.to(
+                tabTitles,
+                {
+                    top: 0,
+                    opacity: 1,
+                    duration: 0.5,
+                    stagger: 0.2,
+                    ease: "power3.inout",
+                },
+                "a"
+            );
+
+            tl.to(
+                tabImage,
+                {
+                    width: "100%",
+                    duration: 1,
+                    delay: 0.5,
+                    stagger: 0.2,
+                    ease: "power3.inout",
+                },
+                "a"
+            ).to(
+                tabContent,
+                {
+                    top: 0,
+                    opacity: 1,
+                    duration: 0.5,
+                    delay: 1,
+                    stagger: 0.2,
+                    ease: "power3.inout",
+                },
+                "a"
+            );
+        });
+
+        return () => ctx.revert();
+    }, [selected]);
+
     return (
         <Section className="section-our-solutions bg-overlay-4 text-white">
             <Container>
                 <div className="flex flex-col">
                     <div className="max-md:px-6 pt-6 md:pt-12 2xl:pt-16 pb-4 max-md:-mx-6 max-md:border-b-2 md:border-r-2 border-solid border-white border-opacity-20 md:w-[30%] xl:w-[30%] 2xl:w-[35%] min-w-[30%] xl:min-w-[30%] 2xl:min-w-[35%]">
-                        <RadioTitle title="Our Solutions" color="white" />
+                        <RadioTitle
+                            title="Our Solutions"
+                            color="white"
+                            className="hide"
+                        />
                     </div>
 
                     <Tabs
@@ -222,16 +314,21 @@ const OurSolutions = () => {
                                 }
                             >
                                 {/* JSON-DRIVEN CONTENT */}
-                                <div className="inner">
-                                    <figure>
+                                <div className="inner relative">
+                                    <figure className="relative">
                                         <Image
                                             src={`/images/${item.image}`}
                                             alt={item.imageAlt}
                                             width={item.imgWidth}
                                             height={item.imgHeight}
                                             unoptimized
-                                            className="image"
+                                            className="image w-0 absolute inset-0 z-[1]"
                                         />
+                                        <div
+                                            style={{
+                                                aspectRatio: `${item.imgWidth} / ${item.imgHeight}`,
+                                            }}
+                                        ></div>
                                     </figure>
 
                                     <div>

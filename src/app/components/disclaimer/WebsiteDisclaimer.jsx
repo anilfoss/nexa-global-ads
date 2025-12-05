@@ -2,16 +2,90 @@ import React from "react";
 import Section from "../utils/Section";
 import Container from "../utils/Container";
 import "@/app/scss/legal.scss";
+import gsap from "gsap";
+import { useGSAP } from "@gsap/react";
+import ScrollTrigger from "gsap/ScrollTrigger";
+import { SplitText } from "gsap/SplitText";
+
+gsap.registerPlugin(useGSAP, ScrollTrigger, SplitText);
 
 const WebsiteDisclaimer = () => {
+    // gsap
+    useGSAP(() => {
+        const ctx = gsap.context(() => {
+            const splitDescription = new SplitText(
+                ".section-legal .left-wrapper .desc-animation",
+                {
+                    type: "lines, words",
+                    tag: "span",
+                    linesClass: "lines",
+                    wordsClass: "words",
+                }
+            );
+            const leftContent = gsap.utils.toArray(
+                ".section-legal .left-wrapper p"
+            );
+            const rightContent = gsap.utils.toArray([
+                ".section-legal .right-wrapper > *",
+            ]);
+
+            const tl = gsap.timeline({
+                scrollTrigger: {
+                    trigger: ".section-legal",
+                    start: "top 50%",
+                    markers: false,
+                },
+            });
+
+            tl.to(".section-legal .desc-animation", {
+                opacity: 1,
+            })
+                .to(splitDescription.words, {
+                    top: 0,
+                    opacity: 1,
+                    duration: 1,
+                    stagger: 0.05,
+                    ease: "back.out(0.8)",
+                })
+                .to(
+                    leftContent,
+                    {
+                        top: 0,
+                        opacity: 1,
+                        duration: 1,
+                        stagger: 0.3,
+                        ease: "back.out(0.8)",
+                    },
+                    "-=0.5"
+                )
+                .to(
+                    rightContent,
+                    {
+                        top: 0,
+                        opacity: 1,
+                        duration: 1,
+                        stagger: 0.3,
+                        ease: "back.out(0.8)",
+                    },
+                    "-=0.5"
+                );
+
+            return () => {
+                splitDescription.revert();
+            };
+        });
+
+        return () => ctx.revert();
+    }, []);
+
     return (
-        <Section className="section-legal section-privacy-policy py-6 md:py-12 2xl:py-16 overflow-hidden">
+        <Section className="section-legal section-website-disclaimer py-6 md:py-12 2xl:py-16 overflow-hidden">
             <Container>
                 <div className="flex gap-6 lg:gap-8 xl:gap-10 max-lg:flex-col">
-                    <div className="lg:w-[35%] lg:min-w-[35%] xl:w-[27%] xl:min-w-[27%]">
-                        <h3>Website Disclaimer</h3>
+                    <div className="left-wrapper lg:w-[35%] lg:min-w-[35%] xl:w-[27%] xl:min-w-[27%]">
+                        <h3 className="desc-animation">Website Disclaimer</h3>
                     </div>
-                    <div className="grow">
+                    <div className="right-wrapper grow">
                         <p>
                             Nexa Global ADS provides this website for general
                             informational and promotional purposes only.

@@ -124,7 +124,7 @@ const CareerForm = ({ onClose, jobTitle, jobLocation, jobTags }) => {
 
         const formData = new FormData(e.currentTarget);
 
-        console.log("formData = ", formData);
+        // console.log("formData = ", formData);
 
         // Perform client-side validation before submission
         const newErrors = validateForm(formData);
@@ -184,7 +184,7 @@ const CareerForm = ({ onClose, jobTitle, jobLocation, jobTags }) => {
     return (
         <>
             <Form
-                className="job-form mx-auto w-full max-w-[38rem]"
+                className="job-form mx-auto w-full max-w-[38rem] opacity-0 relative top-8"
                 validationErrors={errors}
                 onSubmit={onSubmit}
             >

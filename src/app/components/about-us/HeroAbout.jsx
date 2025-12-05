@@ -106,4 +106,3 @@ const HeroAbout = () => {
 };
 
 export default HeroAbout;
-

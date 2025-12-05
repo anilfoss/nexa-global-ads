@@ -1,11 +1,18 @@
+"use client";
+
 import React from "react";
 import Section from "../utils/Section";
 import Container from "../utils/Container";
 import RadioTitle from "../utils/RadioTitle";
-import { Button, Chip } from "@heroui/react";
 import Link from "next/link";
 import IconArrow from "../utils/icons/IconArrow";
 import Image from "next/image";
+import gsap from "gsap";
+import { useGSAP } from "@gsap/react";
+import ScrollTrigger from "gsap/ScrollTrigger";
+import { SplitText } from "gsap/SplitText";
+
+gsap.registerPlugin(useGSAP, ScrollTrigger, SplitText);
 
 const articlesData = [
     {
@@ -61,12 +68,111 @@ const articlesData = [
 ];
 
 const MarketInsights = () => {
+    // gsap
+    useGSAP(() => {
+        const ctx = gsap.context(() => {
+            const radioTitle = gsap.utils.toArray(
+                ".section-market-insights .radio-title > *"
+            );
+            const splitDescription1 = new SplitText(
+                ".section-market-insights .desc-animation",
+                {
+                    type: "lines, words",
+                    tag: "span",
+                    linesClass: "lines",
+                    wordsClass: "words",
+                }
+            );
+            const img = gsap.utils.toArray(
+                ".section-market-insights .img-wrapper .image"
+            );
+            const splitDescription2 = new SplitText(
+                ".section-market-insights .img-wrapper .desc-animation",
+                {
+                    type: "lines, words",
+                    tag: "span",
+                    linesClass: "lines",
+                    wordsClass: "words",
+                }
+            );
+            const imgLink = gsap.utils.toArray([
+                ".section-market-insights .img-wrapper > a",
+            ]);
+
+            const tl = gsap.timeline({
+                scrollTrigger: {
+                    trigger: ".section-market-insights",
+                    start: "top 50%",
+                    markers: false,
+                },
+            });
+
+            tl.to(radioTitle, {
+                left: 0,
+                opacity: 1,
+                duration: 0.3,
+                stagger: 0.1,
+                ease: "power3.inout",
+            })
+                .to(".section-market-insights .desc-animation", {
+                    opacity: 1,
+                })
+                .to(splitDescription1.words, {
+                    top: 0,
+                    opacity: 1,
+                    duration: 1,
+                    stagger: 0.015,
+                    ease: "back.out(0.8)",
+                })
+                .to(
+                    img,
+                    {
+                        width: "100%",
+                        duration: 1,
+                        ease: "power3.inout",
+                    },
+                    "-=1"
+                )
+                .to(".section-market-insights .img-wrapper .desc-animation", {
+                    opacity: 1,
+                })
+                .to(splitDescription2.words, {
+                    top: 0,
+                    opacity: 1,
+                    duration: 1,
+                    stagger: 0.015,
+                    ease: "back.out(0.8)",
+                })
+                .to(
+                    imgLink,
+                    {
+                        bottom: 0,
+                        opacity: 1,
+                        duration: 0.5,
+                        stagger: 0.1,
+                        ease: "power3.inout",
+                    },
+                    "-=0.75"
+                );
+
+            return () => {
+                splitDescription1.revert();
+                splitDescription2.revert();
+            };
+        });
+
+        return () => ctx.revert();
+    }, []);
+
     return (
         <Section className="section-market-insights overflow-hidden">
             <div className="border-b-2 border-solid border-black border-opacity-20">
                 <Container>
                     <div className="pt-6 md:pt-12 2xl:pt-16 pb-4">
-                        <RadioTitle title="Industry & Market Insights" />
+                        <RadioTitle
+                            title="Industry & Market Insights"
+                            className="hide"
+                        />
                     </div>
                 </Container>
             </div>
@@ -74,9 +180,11 @@ const MarketInsights = () => {
                 <Container>
                     <div className="flex flex-col lg:flex-row">
                         <div className="xl:content-center p-6 md:p-10 max-md:pl-4 max-lg:!pl-0 lg:pl-0 border-r-2 border-solid border-black border-opacity-20 lg:w-[50%] 2xl:w-[60%] lg:min-w-[50%] 2xl:min-w-[60%]">
-                            <h3 className="mb-6">Key Industry Insights</h3>
+                            <h3 className="desc-animation mb-6">
+                                Key Industry Insights
+                            </h3>
 
-                            <p>
+                            <p className="desc-animation">
                                 The global Anti-Drone / Counter-UAS sector is a
                                 rapidly expanding part of the defense and
                                 security industry, driven by rising drone
@@ -88,7 +196,7 @@ const MarketInsights = () => {
                                 governments tightening regulations and
                                 prioritizing airspace security technologies.
                             </p>
-                            <p>
+                            <p className="desc-animation">
                                 Market demand is strong across military,
                                 homeland security, airports, energy facilities,
                                 major events, and high-value infrastructure.
@@ -101,27 +209,29 @@ const MarketInsights = () => {
                             </p>
                         </div>
                         <div className="grow xl:content-center p-6 md:p-10 max-lg:!pl-0 max-lg:!pt-0 lg:pr-0 max-lg:border-r-2 border-solid border-black border-opacity-20">
-                            <div className="relative rounded-xl overflow-hidden">
-                                <h5 className="text-white uppercase p-6 md:p-8 w-full absolute top-0 left-0 z-[1]">
+                            <div className="img-wrapper relative rounded-xl overflow-hidden">
+                                <h5 className="desc-animation text-white uppercase p-6 md:p-8 w-full absolute top-8 left-0 z-[1]">
                                     Global Anti-Drone System Market Overview
                                 </h5>
                                 <Link
                                     href="/files/industry-overview-media-and-insights.pdf"
                                     target="_blank"
                                     download={true}
-                                    className="group max-sm:text-[clamp(0.9rem,0.4235rem+2.3824vw,1.375rem)] text-white font-semibold uppercase tracking-[1px] flex items-center gap-4 m-6 md:m-8 absolute left-0 bottom-0 z-[1]"
+                                    className="group max-sm:text-[clamp(0.9rem,0.4235rem+2.3824vw,1.375rem)] text-white font-semibold uppercase tracking-[1px] flex items-center gap-4 m-6 md:m-8 opacity-0 absolute left-0 -bottom-8 z-[1]"
                                 >
                                     Download Insights{" "}
                                     <IconArrow className="invert brightness-0 relative left-0 group-hover:left-1 transition-all duration-300 ease-in-out" />
                                 </Link>
-                                <Image
-                                    src="/images/img-industry-insights.jpg"
-                                    alt="img-industry-insights"
-                                    width={1094}
-                                    height={1010}
-                                    unoptimized
-                                    className="w-full h-auto min-h-72 object-cover"
-                                />
+                                <figure className="aspect-square">
+                                    <Image
+                                        src="/images/img-industry-insights.jpg"
+                                        alt="img-industry-insights"
+                                        width={1094}
+                                        height={1010}
+                                        unoptimized
+                                        className="image w-0 h-full min-h-72 aspect-square object-cover object-left"
+                                    />
+                                </figure>
                             </div>
                         </div>
                     </div>

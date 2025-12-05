@@ -7,6 +7,12 @@ import RadioTitle from "../utils/RadioTitle";
 import Image from "next/image";
 import parse from "html-react-parser";
 import { ScrollShadow } from "@heroui/react";
+import gsap from "gsap";
+import { useGSAP } from "@gsap/react";
+import ScrollTrigger from "gsap/ScrollTrigger";
+import { SplitText } from "gsap/SplitText";
+
+gsap.registerPlugin(useGSAP, ScrollTrigger, SplitText);
 
 const ourLeadershipData = [
     {
@@ -46,7 +52,6 @@ const OurLeadership = () => {
     const scrollRef = useRef(null);
 
     // Scroll active card into view
-
     useEffect(() => {
         if (!scrollRef.current) return;
         const activeCard = scrollRef.current.querySelector(".active");
@@ -60,19 +65,71 @@ const OurLeadership = () => {
             activeCard.clientWidth / 2;
     }, [selectedLeader]);
 
-    // useEffect(() => {
-    //     if (!scrollRef.current) return;
-    //     const activeCard = scrollRef.current.querySelector(
-    //         ".leadership-card.active"
-    //     );
-    //     if (activeCard) {
-    //         activeCard.scrollIntoView({
-    //             behavior: "smooth",
-    //             inline: "start", // aligns the card to the left
-    //             block: "nearest",
-    //         });
-    //     }
-    // }, [selectedLeader]);
+    // gsap
+    useGSAP(() => {
+        const radioTitle = gsap.utils.toArray(
+            ".section-our-leadership .radio-title > *"
+        );
+        const cards = gsap.utils.toArray(".leadership-card");
+
+        const tl1 = gsap.timeline({
+            scrollTrigger: {
+                trigger: ".section-our-leadership",
+                start: "top 70%",
+                markers: false,
+            },
+        });
+
+        tl1.to(radioTitle, {
+            left: 0,
+            opacity: 1,
+            duration: 0.3,
+            stagger: 0.3,
+            ease: "power3.inout",
+        });
+
+        tl1.to(cards, {
+            left: 0,
+            opacity: 1,
+            duration: 0.5,
+            delay: 0,
+            stagger: 0.3,
+            ease: "back.out(2.5)",
+        });
+    });
+
+    useGSAP(() => {
+        const splitDescription = new SplitText(
+            ".leadership-detail h3, .leadership-detail p",
+            {
+                type: "lines, words",
+                tag: "span",
+                linesClass: "lines",
+                wordsClass: "words",
+            }
+        );
+
+        const tl3 = gsap.timeline({
+            scrollTrigger: {
+                trigger: ".section-our-leadership",
+                start: "top 70%",
+                markers: false,
+            },
+        });
+
+        tl3.to(".leadership-detail h3, .leadership-detail p", { opacity: 1 });
+        tl3.to(splitDescription.words, {
+            top: 0,
+            opacity: 1,
+            stagger: 0.02,
+            duration: 1,
+            ease: "back.out(0.8)",
+        });
+
+        return () => {
+            splitDescription.revert();
+        };
+    }, []);
 
     return (
         <Section
@@ -83,7 +140,11 @@ const OurLeadership = () => {
                 <Container>
                     <div className="flex">
                         <div className="pt-6 md:pt-12 2xl:pt-16 pb-4 border-r-2 border-solid border-white border-opacity-20 pr-6 w-full lg:w-[65%]">
-                            <RadioTitle title="Our Leadership" color="white" />
+                            <RadioTitle
+                                title="Our Leadership"
+                                color="white"
+                                className="hide"
+                            />
                         </div>
                         <div className="grow"></div>
                     </div>
@@ -94,7 +155,6 @@ const OurLeadership = () => {
                 <div className="flex flex-col lg:flex-row">
                     {/* Leadership cards */}
                     <div className="leadership-card-wrapper p-6 pl-0 md:pl-0 md:pr-10 md:py-10 border-r-2 border-solid border-white border-opacity-20 w-full lg:w-[65%] lg:min-w-[65%]">
-                        {/* ✅ wrap the ScrollShadow in a div with ref */}
                         <ScrollShadow
                             hideScrollBar
                             orientation="horizontal"
@@ -104,7 +164,7 @@ const OurLeadership = () => {
                             {ourLeadershipData.map((leadership) => (
                                 <div
                                     key={leadership.id}
-                                    className={`leadership-card flex flex-col gap-3 px-3 md:px-4 lg:px-3.5 2xl:px-5 w-1/3 min-w-64 md:min-w-72 lg:min-w-64 xl:min-w-0 cursor-pointer transition-all duration-300 
+                                    className={`leadership-card flex flex-col gap-3 px-3 md:px-4 lg:px-3.5 2xl:px-5 w-1/3 min-w-64 md:min-w-72 lg:min-w-64 xl:min-w-0 cursor-pointer opacity-0 relative -left-8 
                                         ${
                                             selectedLeader.id === leadership.id
                                                 ? "active"
@@ -115,7 +175,7 @@ const OurLeadership = () => {
                                         setSelectedLeader(leadership)
                                     }
                                 >
-                                    <figure>
+                                    <figure className="rounded-md overflow-hidden">
                                         <Image
                                             src={`/images/${leadership.photo}`}
                                             alt={leadership.name}

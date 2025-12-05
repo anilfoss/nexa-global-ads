@@ -33,7 +33,6 @@ const AboutUs = () => {
             left: 0,
             opacity: 1,
             duration: 0.3,
-            delay: 0.5,
             stagger: 0.1,
             ease: "power3.inout",
         });
@@ -46,10 +45,9 @@ const AboutUs = () => {
             scrollTrigger: {
                 trigger: ".section-about-us",
                 start: "top 60%",
-                end: "150% 100%",
+                end: "120% 100%",
                 markers: false,
                 scrub: 1,
-                // pin: true,
                 ease: "power3.inout",
             },
         });

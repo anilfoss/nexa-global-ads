@@ -14,20 +14,29 @@ import "@/app/scss/footer.scss";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import parse from "html-react-parser";
 
 gsap.registerPlugin(useGSAP, ScrollTrigger);
 
 const footerData = {
     footerAddress: [
         {
+            title: "Nexa Global Co., Ltd.",
+            address:
+                "26-22, 5th floor, Sanbon-ro 323beon-gil, Gunpo-si, Gyeonggi-do, Republic of Korea",
+            className: "address-korea",
+        },
+        {
             title: "Nexa Global ADS Pte. Ltd.",
             address:
                 "8 Eu Tong Sen Street, 13-86 The Central, Singapore 059818",
+            className: "address-singapore",
         },
         {
-            title: "Nexa Global Co. Ltd.",
+            title: "Nexa Global <span class='font-body'>(</span>ADS<span class='font-body'>)</span> Private Limited",
             address:
-                "26-22, 5th floor, Sanbon-ro 323beon-gil, Gunpo-si, Gyeonggi-do, Republic of Korea",
+                "45 Basant Lok, 3rd Floor, Vasant Vihar, New Delhi - 110 057  India",
+            className: "address-india",
         },
     ],
     mainMenu: [
@@ -87,18 +96,18 @@ const footerData = {
             title: "Email Us",
             link: "mailto:info@nexaglobalads.com",
         },
-        {
-            title: "Call Us",
-            link: "tel:+6591299319",
-        },
+        // {
+        //     title: "Call Us",
+        //     link: "tel:+6591299319",
+        // },
     ],
     contactIconsMenu: [
-        {
-            title: "+65 9129 9319",
-            link: "tel:+6591299319",
-            icon: "IconPhoneGreen",
-            class: "icon-phone",
-        },
+        // {
+        //     title: "+65 9129 9319",
+        //     link: "tel:+6591299319",
+        //     icon: "IconPhoneGreen",
+        //     class: "icon-phone",
+        // },
         {
             title: "info@nexaglobalads.com",
             link: "mailto:info@nexaglobalads.com",
@@ -188,10 +197,20 @@ const Footer = () => {
                                                         className="max-md:max-h-[27px] rounded-none"
                                                     />
                                                     <h6 className="text-white font-semibold uppercase">
-                                                        {address.title}
+                                                        {parse(address.title)}
                                                     </h6>
                                                 </div>
-                                                <p className="group-first-of-type:max-w-[212px] group-last-of-type:max-w-[290px]">
+                                                <p
+                                                    className={` ${
+                                                        address.className ===
+                                                        "address-korea"
+                                                            ? "max-w-[18rem]"
+                                                            : address.className ===
+                                                              "address-singapore"
+                                                            ? "max-w-[13.1rem]"
+                                                            : "max-w-[16.5rem]"
+                                                    }`}
+                                                >
                                                     {address.address}
                                                 </p>
                                             </div>
@@ -310,7 +329,7 @@ const Footer = () => {
                 <Container>
                     <div className="flex flex-col lg:flex-row justify-between gap-6 md:gap-8 xl:gap-8 2xl:gap-10 py-6 md:py-8 xl:py-8 2xl:py-10">
                         <h6 className="animate text-white font-medium md:whitespace-nowrap">
-                            Subscribe to our newsletter
+                            Subscribe to Our Newsletter
                         </h6>
                         <NewsletterForm className="animate w-full max-w-5xl xl:max-w-3xl 2xl:max-w-5xl" />
                     </div>
@@ -324,7 +343,6 @@ const Footer = () => {
                         <h6 className="animate text-white font-medium">
                             Disclaimer
                         </h6>
-                        {/* <Disclaimer className="animate lg:text-right w-full lg:max-w-[65%] xl:max-w-3xl 2xl:max-w-5xl" /> */}
                         <div className="animate text-white text-opacity-60 lg:text-right w-full lg:max-w-[65%] xl:max-w-3xl 2xl:max-w-5xl">
                             Nexa Global ADS provides this website for general
                             informational and promotional purposes only and does

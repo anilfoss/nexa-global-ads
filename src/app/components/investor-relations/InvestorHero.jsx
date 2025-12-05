@@ -24,7 +24,6 @@ const InvestorHero = () => {
                 });
             }
             setShowPlaceholder(false);
-            // setShowPlaceholder(true);
         }, 500);
 
         return () => clearTimeout(timer);

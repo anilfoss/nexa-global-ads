@@ -5,6 +5,12 @@ import Section from "../utils/Section";
 import Container from "../utils/Container";
 import RadioTitle from "../utils/RadioTitle";
 import Image from "next/image";
+import gsap from "gsap";
+import { useGSAP } from "@gsap/react";
+import ScrollTrigger from "gsap/ScrollTrigger";
+import { SplitText } from "gsap/SplitText";
+
+gsap.registerPlugin(useGSAP, ScrollTrigger, SplitText);
 
 const ourValuesData = [
     {
@@ -52,23 +58,67 @@ const ourValuesData = [
 ];
 
 const OurValues = () => {
+    // gsap
+    useGSAP(() => {
+        const radioTitle = gsap.utils.toArray(
+            ".section-our-values .radio-title > *"
+        );
+        const valueCards = gsap.utils.toArray(
+            ".section-our-values .value-cards .value-card"
+        );
+
+        const tl1 = gsap.timeline({
+            scrollTrigger: {
+                trigger: ".section-our-values",
+                start: "top 70%",
+                markers: false,
+            },
+        });
+
+        tl1.to(radioTitle, {
+            left: 0,
+            opacity: 1,
+            duration: 0.3,
+            stagger: 0.3,
+            ease: "power3.inout",
+        });
+
+        const tl2 = gsap.timeline({
+            scrollTrigger: {
+                trigger: ".section-our-values .value-cards",
+                start: "top 50%",
+                end: "bottom 100%",
+                markers: false,
+            },
+        });
+
+        tl2.to(valueCards, {
+            top: 0,
+            opacity: 1,
+            duration: 1,
+            // stagger: 0.5,
+            stagger: 0.3,
+            ease: "back.out(3.5)",
+        });
+    });
+
     return (
         <Section
             id="our-values"
-            className="bg-light-gray border-t-2 border-solid border-black border-opacity-20 overflow-hidden"
+            className="section-our-values bg-light-gray border-t-2 border-solid border-black border-opacity-20 overflow-hidden"
         >
             <div className="">
                 <Container>
                     <div className="flex flex-col lg:flex-row">
                         <div className="pt-6 md:pt-12 2xl:pt-16 pb-4 border-r-2 border-solid border-black border-opacity-20 pr-6 w-full lg:w-44 lg:min-w-44 xl:w-52 xl:min-w-52 2xl:w-60 2xl:min-w-60">
-                            <RadioTitle title="Our Values" />
+                            <RadioTitle title="Our Values" className="hide" />
                         </div>
-                        <div className="flex flex-wrap justify-center sm:justify-between grow gap-6 md:gap-12 p-6 md:p-10 lg:pr-0 max-lg:!pt-0 max-md:pr-6 max-lg:pr-10 max-lg:!pl-0 max-lg:border-r-2 max-lg:border-solid max-lg:border-black max-lg:border-opacity-20">
+                        <div className="value-cards flex flex-wrap justify-center sm:justify-between grow gap-6 md:gap-12 p-6 md:p-10 lg:pr-0 max-lg:!pt-0 max-md:pr-6 max-lg:pr-10 max-lg:!pl-0 max-lg:border-r-2 max-lg:border-solid max-lg:border-black max-lg:border-opacity-20">
                             {ourValuesData?.map((item, index) => {
                                 return (
                                     <figure
                                         key={index}
-                                        className="text-white text-center flex flex-col justify-center content-center gap-4 p-4 2xl:p-8 w-full sm:w-[47%] md:w-[45%] max-w-[24rem] xl:w-[30%] xl:max-w-[24rem] aspect-square relative z-[1] rounded-full overflow-hidden group transition-all duration-300 ease-in-out after:content-[''] after:bg-overlay-3 after:absolute after:inset-0 after:-z-[1]"
+                                        className="value-card text-white text-center flex flex-col justify-center content-center gap-4 p-4 2xl:p-8 w-full sm:w-[47%] md:w-[45%] max-w-[24rem] xl:w-[30%] xl:max-w-[24rem] aspect-square opacity-0 relative top-8 z-[1] rounded-full overflow-hidden group after:content-[''] after:bg-overlay-3 after:absolute after:inset-0 after:-z-[1]"
                                     >
                                         <h5 className="text-white font-semibold max-sm:px-4 mt-0 group-hover:-mt-12 visible opacity-100 group-hover:invisible group-hover:opacity-0 transition-all duration-300 ease-in-out">
                                             {item.title}

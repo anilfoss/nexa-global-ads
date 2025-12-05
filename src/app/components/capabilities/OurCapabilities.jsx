@@ -7,6 +7,12 @@ import RadioTitle from "../utils/RadioTitle";
 import { Button, Tab, Tabs } from "@heroui/react";
 import Image from "next/image";
 import Link from "next/link";
+import gsap from "gsap";
+import { useGSAP } from "@gsap/react";
+import ScrollTrigger from "gsap/ScrollTrigger";
+import { SplitText } from "gsap/SplitText";
+
+gsap.registerPlugin(useGSAP, ScrollTrigger, SplitText);
 
 const capabilitiesData = [
     {
@@ -134,20 +140,107 @@ const OurCapabilities = () => {
     // start tabs from left below 767px
 
     const scrollActiveTabIntoView = () => {
-        if (window.innerWidth >= 768) return; // only on horizontal/mobile
+        if (window.innerWidth >= 768) return; // Only for mobile
 
+        const container = document.querySelector(
+            ".capabilities-tabs-wrapper [data-slot='tabList']"
+        );
         const el = tabRefs.current[selected];
-        if (el) {
-            el.scrollIntoView({
-                behavior: "smooth",
-                // block: "nearest",
-                inline: "start",
-            });
-        }
+
+        if (!container || !el) return;
+
+        container.scrollLeft =
+            el.offsetLeft - container.clientWidth / 2 + el.clientWidth / 2;
     };
 
     useEffect(() => {
-        scrollActiveTabIntoView();
+        setTimeout(() => {
+            scrollActiveTabIntoView();
+        }, 50);
+    }, []);
+
+    // gsap
+    useGSAP(() => {
+        const radioTitle = gsap.utils.toArray(
+            ".section-our-capabilities .radio-title > *"
+        );
+
+        const tl = gsap.timeline({
+            scrollTrigger: {
+                trigger: ".section-our-capabilities",
+                start: "top 70%",
+                markers: false,
+            },
+        });
+
+        tl.to(radioTitle, {
+            left: 0,
+            opacity: 1,
+            duration: 0.3,
+            stagger: 0.1,
+            ease: "power3.inout",
+        });
+    }, []);
+
+    useGSAP(() => {
+        const ctx = gsap.context(() => {
+            const tabTitles = gsap.utils.toArray(
+                ".capabilities-tabs-wrapper [data-slot='tabList'] > button [data-slot='tabContent']"
+            );
+
+            const tabImage = gsap.utils.toArray(
+                ".capabilities-tabs-wrapper [data-slot='panel'] .inner figure"
+            );
+            const tabContent = gsap.utils.toArray(
+                ".capabilities-tabs-wrapper [data-slot='panel'] .inner .content-wrapper > *"
+            );
+
+            const tl = gsap.timeline({
+                scrollTrigger: {
+                    trigger: ".section-our-capabilities",
+                    start: "top 50%",
+                    markers: false,
+                },
+            });
+
+            tl.to(
+                tabTitles,
+                {
+                    top: 0,
+                    opacity: 1,
+                    duration: 0.5,
+                    stagger: 0.2,
+                    ease: "power3.inout",
+                },
+                "a"
+            );
+
+            tl.to(
+                tabImage,
+                {
+                    top: 0,
+                    opacity: 1,
+                    duration: 0.5,
+                    delay: 0.5,
+                    stagger: 0.2,
+                    ease: "power3.inout",
+                },
+                "a"
+            ).to(
+                tabContent,
+                {
+                    top: 0,
+                    opacity: 1,
+                    duration: 0.5,
+                    delay: 1,
+                    stagger: 0.2,
+                    ease: "power3.inout",
+                },
+                "a"
+            );
+        });
+
+        return () => ctx.revert();
     }, [selected]);
 
     return (
@@ -155,7 +248,7 @@ const OurCapabilities = () => {
             <Container>
                 <div className="flex flex-col">
                     <div className="radio-title-wrapper max-md:px-6 pt-6 md:pt-12 2xl:pt-16 pb-4 max-md:-mx-6 md:border-r-2 border-solid border-black border-opacity-20 md:w-[30%] xl:w-[30%] 2xl:w-[35%]">
-                        <RadioTitle title="Our Capabilities" />
+                        <RadioTitle title="Our Capabilities" className="hide" />
                     </div>
 
                     <Tabs
@@ -186,7 +279,7 @@ const OurCapabilities = () => {
                                 }
                             >
                                 <div className="inner">
-                                    <figure>
+                                    <figure className="relative">
                                         <Image
                                             src={`/images/${item.image}`}
                                             alt={item.title}

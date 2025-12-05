@@ -1,12 +1,19 @@
+"use client";
+
 import React from "react";
 import Section from "../utils/Section";
 import Container from "../utils/Container";
 import RadioTitle from "../utils/RadioTitle";
-import { Button, Chip } from "@heroui/react";
+import { Button } from "@heroui/react";
 import Link from "next/link";
-import IconArrow from "../utils/icons/IconArrow";
 import IconGrow from "../utils/icons/IconGrow";
 import Image from "next/image";
+import gsap from "gsap";
+import { useGSAP } from "@gsap/react";
+import ScrollTrigger from "gsap/ScrollTrigger";
+import { SplitText } from "gsap/SplitText";
+
+gsap.registerPlugin(useGSAP, ScrollTrigger, SplitText);
 
 const financialData = [
     {
@@ -45,12 +52,121 @@ const financialData = [
 ];
 
 const FinancialOverview = () => {
+    // gsap
+    useGSAP(() => {
+        const ctx = gsap.context(() => {
+            const radioTitle = gsap.utils.toArray(
+                ".section-financial-overview .radio-title > *"
+            );
+            const splitDescription1 = new SplitText(
+                ".section-financial-overview .desc-animation1",
+                {
+                    type: "lines, words",
+                    tag: "span",
+                    linesClass: "lines",
+                    wordsClass: "words",
+                }
+            );
+            const cards = gsap.utils.toArray(
+                ".section-financial-overview .card-wrapper .card"
+            );
+            const splitDescription2 = new SplitText(
+                ".section-financial-overview .desc-animation2",
+                {
+                    type: "lines, words",
+                    tag: "span",
+                    linesClass: "lines",
+                    wordsClass: "words",
+                }
+            );
+            const button = gsap.utils.toArray([
+                ".section-financial-overview .button",
+            ]);
+
+            const tl = gsap.timeline({
+                scrollTrigger: {
+                    trigger: ".section-financial-overview",
+                    start: "top 50%",
+                    markers: false,
+                },
+            });
+
+            tl.to(radioTitle, {
+                left: 0,
+                opacity: 1,
+                duration: 0.3,
+                stagger: 0.1,
+                ease: "power3.inout",
+            })
+                .to(".section-financial-overview .desc-animation1", {
+                    opacity: 1,
+                })
+                .to(splitDescription1.words, {
+                    top: 0,
+                    opacity: 1,
+                    duration: 1,
+                    stagger: 0.015,
+                    ease: "back.out(0.8)",
+                })
+                .to(
+                    cards,
+                    {
+                        top: 0,
+                        opacity: 1,
+                        duration: 1,
+                        stagger: 0.3,
+                        ease: "back.out(0.8)",
+                    },
+                    "-=0.5"
+                )
+                .to(
+                    ".section-financial-overview .desc-animation2",
+                    {
+                        opacity: 1,
+                    },
+                    "-=0.5"
+                )
+                .to(
+                    splitDescription2.words,
+                    {
+                        top: 0,
+                        opacity: 1,
+                        duration: 1,
+                        stagger: 0.015,
+                        ease: "back.out(0.8)",
+                    },
+                    "-=0.5"
+                )
+                .to(
+                    button,
+                    {
+                        top: 0,
+                        opacity: 1,
+                        duration: 0.5,
+                        stagger: 0.1,
+                        ease: "power3.inout",
+                    },
+                    "-=0.5"
+                );
+
+            return () => {
+                splitDescription1.revert();
+                splitDescription2.revert();
+            };
+        });
+
+        return () => ctx.revert();
+    }, []);
+
     return (
         <Section className="section-financial-overview bg-gradient-to-b from-[#CEDAC7] to-light-gray to-[54%] overflow-hidden">
             <div className="border-b-2 border-solid border-black border-opacity-20">
                 <Container>
                     <div className="pt-6 md:pt-12 2xl:pt-16 pb-4">
-                        <RadioTitle title="Our Financial Overview" />
+                        <RadioTitle
+                            title="Our Financial Overview"
+                            className="hide"
+                        />
                     </div>
                 </Container>
             </div>
@@ -59,11 +175,11 @@ const FinancialOverview = () => {
                     <div className="flex flex-row-reverse lg:flex-row">
                         <div className="border-r-2 border-solid border-black border-opacity-20 lg:w-44 lg:min-w-44 xl:w-52 xl:min-w-52 2xl:w-60 2xl:min-w-60"></div>
                         <div className="grow p-6 md:p-10 max-lg:!pl-0 lg:pr-0">
-                            <h3 className="mb-6">
+                            <h3 className="desc-animation desc-animation1 mb-6">
                                 Performance, Progress, and Outlook
                             </h3>
 
-                            <p>
+                            <p className="desc-animation desc-animation1">
                                 Nexa Global’s financial outlook reflects rapid
                                 growth and strong early traction. Revenue is
                                 projected to increase from USD 15.5M in Year 1
@@ -86,10 +202,10 @@ const FinancialOverview = () => {
                                         return (
                                             <div
                                                 key={index}
-                                                className="card px-3 md:px-2 mb-6 md:mb-4 w-full md:w-1/2 xl:w-1/3"
+                                                className="card px-3 md:px-2 mb-6 md:mb-4 w-full md:w-1/2 xl:w-1/3 opacity-0 relative top-8"
                                             >
                                                 <div
-                                                    className={`inner text-[clamp(0.9rem,0.56rem+1.7002vw,1.375rem)] md:text-[clamp(1rem,0.2485rem+1.5656vw,1.5rem)] xl:text-[clamp(1.05rem,0.15rem+1.125vw,1.5rem)] flex p-4 h-full border-2 border-solid border-black border-opacity-20 whitespace-nowrap rounded-md ${item?.class}`}
+                                                    className={`inner text-[clamp(0.9rem,0.56rem+1.7002vw,1.375rem)] md:text-[clamp(1rem,0.2485rem+1.5656vw,1.5rem)] xl:text-[clamp(1.05rem,0.15rem+1.125vw,1.5rem)] flex p-4 h-full border-2 border-solid border-black border-opacity-20 whitespace-nowrap rounded-md overflow-hidden ${item?.class}`}
                                                 >
                                                     <div className="grow">
                                                         <div className="">
@@ -138,8 +254,10 @@ const FinancialOverview = () => {
                                 </div>
                             </div>
 
-                            <h3 className="mb-6">Strategic Position</h3>
-                            <p>
+                            <h3 className="desc-animation desc-animation2 mb-6">
+                                Strategic Position
+                            </h3>
+                            <p className="desc-animation desc-animation2">
                                 Nexa Global operates within a fast-growing,
                                 strategically critical segment of global defense
                                 and security. Rising drone threats, combined
@@ -155,7 +273,7 @@ const FinancialOverview = () => {
                                 href="/files/financials-media-and-insights.pdf"
                                 target="_blank"
                                 download={true}
-                                className="button sm:!px-16 !py-[1rem] md:!py-[1.125rem] mt-8 max-sm:w-full !rounded-[4px]"
+                                className="button sm:!px-16 !py-[1rem] md:!py-[1.125rem] mt-8 max-sm:w-full !rounded-[4px] opacity-0 relative top-8"
                             >
                                 Download Report
                             </Button>

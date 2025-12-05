@@ -5,13 +5,18 @@ import Section from "../utils/Section";
 import Container from "../utils/Container";
 import RadioTitle from "../utils/RadioTitle";
 import { Button, Chip, useDisclosure } from "@heroui/react";
-import Link from "next/link";
 import IconArrow from "../utils/icons/IconArrow";
 import IconSuitcase from "../utils/icons/IconSuitcase";
 import IconFlagIndia from "../utils/icons/IconFlagIndia";
 import IconFlagSouthKorea from "../utils/icons/IconFlagSouthKorea";
 import IconFlagSingapore from "../utils/icons/IconFlagSingapore";
 import CareerModal from "./CareerModal";
+import gsap from "gsap";
+import { useGSAP } from "@gsap/react";
+import ScrollTrigger from "gsap/ScrollTrigger";
+import { SplitText } from "gsap/SplitText";
+
+gsap.registerPlugin(useGSAP, ScrollTrigger, SplitText);
 
 const openPositionsData = [
     {
@@ -175,6 +180,42 @@ const OpenPositions = () => {
         onOpen();
     };
 
+    // gsap
+    useGSAP(() => {
+        const ctx = gsap.context(() => {
+            const radioTitle = gsap.utils.toArray(
+                ".section-our-positions .radio-title > *"
+            );
+            const rows = gsap.utils.toArray(
+                ".section-our-positions .table-open-positions tr"
+            );
+
+            const tl = gsap.timeline({
+                scrollTrigger: {
+                    trigger: ".section-our-positions",
+                    start: "top 50%",
+                    markers: false,
+                },
+            });
+
+            tl.to(radioTitle, {
+                left: 0,
+                opacity: 1,
+                duration: 0.3,
+                stagger: 0.1,
+                ease: "power3.inout",
+            }).to(rows, {
+                top: 0,
+                opacity: 1,
+                duration: 1,
+                stagger: 0.15,
+                ease: "back.out(0.8)",
+            });
+        });
+
+        return () => ctx.revert();
+    }, []);
+
     return (
         <>
             <Section className="section-our-positions bg-light-gray pb-12 md:pb-20">
@@ -182,7 +223,10 @@ const OpenPositions = () => {
                     <Container>
                         <div className="flex">
                             <div className="pt-6 md:pt-12 2xl:pt-16 pb-4 w-full">
-                                <RadioTitle title="Open Positions" />
+                                <RadioTitle
+                                    title="Open Positions"
+                                    className="hide"
+                                />
                             </div>
                             {/* <div className="grow"></div> */}
                         </div>
@@ -192,7 +236,7 @@ const OpenPositions = () => {
                     <Container>
                         <table className="table-open-positions">
                             <thead>
-                                <tr>
+                                <tr className="opacity-0 relative top-8">
                                     <th>Position</th>
                                     <th>Department</th>
                                     <th>Experience</th>
@@ -203,7 +247,10 @@ const OpenPositions = () => {
                             <tbody>
                                 {openPositionsData.map((data) => {
                                     return (
-                                        <tr key={data.id}>
+                                        <tr
+                                            key={data.id}
+                                            className="opacity-0 relative top-8"
+                                        >
                                             <td data-label="Position">
                                                 {data.position}
                                             </td>
@@ -245,19 +292,8 @@ const OpenPositions = () => {
                                                 </div>
                                             </td>
                                             <td data-label="">
-                                                {/* <Link
-                                                    className="link"
-                                                    href="#"
-                                                    onPress={onOpen}
-                                                >
-                                                    <span className="flex items-center gap-2 md:gap-3 xl:gap-3 2xl:gap-4">
-                                                        {data.buttonText}
-                                                        <IconArrow className="w-[12px] md:w-[14px] lg:w-[16px] 2xl:w-[18px] h-auto" />
-                                                    </span>
-                                                </Link> */}
                                                 <Button
                                                     variant="light"
-                                                    // onPress={onOpen}
                                                     onPress={() =>
                                                         handleJob(data)
                                                     }

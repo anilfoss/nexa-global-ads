@@ -141,7 +141,7 @@ const ContactForm = () => {
 
     return (
         <div className="form-wrapper">
-            <p className="text-medium">
+            <p className="text-medium opacity-0 relative top-8">
                 For specific support, get a demo or to learn more about Nexa's
                 CUaS capabilities, send us a message and our team will get back
                 to you shortly.
@@ -158,6 +158,7 @@ const ContactForm = () => {
                     }
                     setCountryError(false);
                 }}
+                className="opacity-0 relative top-8"
             >
                 <div className="inner">
                     <Input
