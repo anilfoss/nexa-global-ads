@@ -1,8 +1,8 @@
 import React from "react";
 import HeroProducts from "@/app/components/products/HeroProducts";
-import "@/app/scss/products.scss";
 import OurProducts from "@/app/components/products/OurProducts";
 import OurSolutions from "@/app/components/products/OurSolutions";
+import "@/app/scss/products.scss";
 
 export const metadata = {
     title: "Products | End-to-end AI Counter UAS solutions",

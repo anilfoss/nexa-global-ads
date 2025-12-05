@@ -1,5 +1,5 @@
 import React from "react";
-import PrivacyPolicy from "@/app/components/privacy-policy/PrivacyPolicy";
+import PrivacyPolicyLoader from "@/app/components/privacy-policy/PrivacyPolicyLoader";
 
 export const metadata = {
     title: "Privacy Policy",
@@ -34,7 +34,7 @@ export const metadata = {
 const page = () => {
     return (
         <>
-            <PrivacyPolicy />
+            <PrivacyPolicyLoader />
         </>
     );
 };

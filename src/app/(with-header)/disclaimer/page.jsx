@@ -1,5 +1,5 @@
 import React from "react";
-import WebsiteDisclaimer from "@/app/components/disclaimer/WebsiteDisclaimer";
+import DisclaimerLoader from "@/app/components/disclaimer/DisclaimerLoader";
 
 export const metadata = {
     title: "Disclaimer",
@@ -34,7 +34,7 @@ export const metadata = {
 const page = () => {
     return (
         <>
-            <WebsiteDisclaimer />
+            <DisclaimerLoader />
         </>
     );
 };

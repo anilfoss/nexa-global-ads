@@ -1,5 +1,5 @@
 import React from "react";
-import Cookies from "@/app/components/cookies/Cookies";
+import CookiesLoader from "@/app/components/cookies/CookiesLoader";
 
 export const metadata = {
     title: "Cookies",
@@ -34,7 +34,7 @@ export const metadata = {
 const page = () => {
     return (
         <>
-            <Cookies />
+            <CookiesLoader />
         </>
     );
 };

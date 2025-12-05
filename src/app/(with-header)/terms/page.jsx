@@ -1,5 +1,5 @@
 import React from "react";
-import Terms from "@/app/components/terms/Terms";
+import TermsLoader from "@/app/components/terms/TermsLoader";
 
 export const metadata = {
     title: "Terms and Conditions",
@@ -34,7 +34,7 @@ export const metadata = {
 const page = () => {
     return (
         <>
-            <Terms />
+            <TermsLoader />
         </>
     );
 };
