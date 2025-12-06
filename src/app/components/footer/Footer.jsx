@@ -33,7 +33,7 @@ const footerData = {
             className: "address-singapore",
         },
         {
-            title: "Nexa Global <span class='font-body'>(</span>ADS<span class='font-body'>)</span> Private Limited",
+            title: "Nexa Global <span class='font-body'>(</span>ADS<span class='font-body'>)</span> Pvt. Ltd.",
             address:
                 "45 Basant Lok, 3rd Floor, Vasant Vihar, New Delhi - 110 057  India",
             className: "address-india",
@@ -406,3 +406,4 @@ const Footer = () => {
 };
 
 export default Footer;
+
